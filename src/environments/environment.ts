@@ -6,5 +6,5 @@
 export const environment = {
   production: false,
   hmr: false,
-  endpoint: 'http://localhost:8000/',
+  endpoint: 'http://localhost:8000',
 };

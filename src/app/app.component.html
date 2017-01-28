@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <fyibn-nav></fyibn-nav>
+  <fyibn-nav *ngIf="(loggedIn$ | async)"></fyibn-nav>
 
   <div class="inner">
     <router-outlet></router-outlet>

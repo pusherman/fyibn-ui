@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthActions } from '../services/auth/auth.actions';
 
 @Component({
   selector: 'fyibn-nav',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FyibnNavComponent implements OnInit {
 
-  constructor() { }
+  constructor(private actions: AuthActions) { }
 
   ngOnInit() {
   }
 
+  logout() {
+    this.actions.logout();
+  }
 }
