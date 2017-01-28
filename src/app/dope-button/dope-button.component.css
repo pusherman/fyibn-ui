@@ -1,0 +1,9 @@
+.dope {
+  background: red;
+  height: 50px;
+  width: 50px;
+}
+
+.dope-off {
+  background:  url('/assets/images/record-off.png');
+}

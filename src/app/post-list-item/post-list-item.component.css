@@ -1,0 +1,21 @@
+.post {
+  display: flex;
+  border-top: 1px solid #444;
+  padding: 12px 0;
+}
+
+.col {
+  flex: 1;
+}
+
+.dope-button {
+  flex: 0 0 50px;
+}
+
+.comments {
+  flex: 0 0 15%;
+}
+
+.meta {
+  font-size: 0.6rem;
+}
