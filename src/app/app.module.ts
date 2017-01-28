@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app.route';
 import { FyibnNavComponent } from './fyibn-nav/fyibn-nav.component';
 import { PostListModule } from './post-list/post-list.module';
 import { PostViewModule } from './post-view/post-view.module';
+import { PostFormModule } from './post-form/post-form.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { PostViewModule } from './post-view/post-view.module';
     HttpModule,
     PostListModule,
     PostViewModule,
+    PostFormModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
