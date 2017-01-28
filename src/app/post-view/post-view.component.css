@@ -1,0 +1,13 @@
+.post {
+  display: flex;
+  border-bottom: 1px solid #444;
+  padding: 12px 0;
+}
+
+.col {
+  flex: 1;
+}
+
+.dope-button {
+  flex: 0 0 50px;
+}

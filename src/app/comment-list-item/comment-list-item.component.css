@@ -1,0 +1,13 @@
+.meta {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
+}
+
+.comment {
+  padding: 20px 0 25px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+p {
+  margin-bottom: 0.2rem;
+}
