@@ -16,10 +16,7 @@ import { AuthService } from './auth.service';
 
 @Injectable()
 export class AuthEpics {
-  constructor(
-    private http: Http,
-    private auth: AuthService,
-  ) {}
+  constructor(private auth: AuthService) {}
 
   login = (action$: ActionsObservable<IAction>) => {
     const authSuccessful = payload => ({ type: AuthActions.AUTH_SUCCESSFUL, payload });

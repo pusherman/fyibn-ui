@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { select } from 'ng2-redux';
+import { Observable } from 'rxjs/Observable';
+
+import { PostActions } from '../services/post/post.actions';
 
 @Component({
   selector: 'post-list',
@@ -6,25 +10,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./post-list.component.css']
 })
 export class PostListComponent implements OnInit {
-  public posts;
+  @select(['posts', 'latest']) latestPosts$: Observable<string>;
 
-  constructor() { }
+  constructor(private actions: PostActions) { }
 
   ngOnInit() {
-    this.posts = [
-      {
-        by: 'Corey',
-        title: 'Test',
-      },
-      {
-        by: 'Corey',
-        title: 'Test',
-      },
-      {
-        by: 'Corey',
-        title: 'Test',
-      },
-    ];
+    this.actions.getLatest();
   }
-
 }

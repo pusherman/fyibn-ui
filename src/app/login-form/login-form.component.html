@@ -1,19 +1,25 @@
-<form class="form-signin">
+<form
+  novalidate
+  class="form-signin"
+  (ngSubmit)="onSubmit(login)"
+  [formGroup]="login">
+
   <h2 class="form-signin-heading">
     Please sign in
   </h2>
 
   <label
-    for="inputEmail"
+    for="inputUsername"
     class="sr-only">
     Email address
   </label>
 
   <input
-    type="email"
-    id="inputEmail"
+    type="text"
+    formControlName="username"
+    id="inputUsername"
     class="form-control"
-    placeholder="Email address"
+    placeholder="Username"
     required
     autofocus>
 
@@ -25,6 +31,7 @@
 
   <input
     type="password"
+    formControlName="password"
     id="inputPassword"
     class="form-control"
     placeholder="Password"
@@ -34,7 +41,8 @@
     <label>
       <input
         type="checkbox"
-        value="remember-me">
+        formControlName="rememberMe"
+        value="remember">
         Remember me
     </label>
   </div>

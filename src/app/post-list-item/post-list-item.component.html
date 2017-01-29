@@ -9,11 +9,11 @@
   <div
     class="col">
     <div class="title">
-      Stik Figa - Central Standard Time
+      {{ post.title }}
     </div>
 
     <div class="meta">
-      0 points added 1 day ago by hayden
+      0 points added {{ post.created_at | amTimeAgo }} by {{ post.user.name }}
     </div>
   </div>
 

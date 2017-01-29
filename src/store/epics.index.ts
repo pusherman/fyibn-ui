@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { combineEpics } from 'redux-observable';
 
 import { AuthEpics } from '../app/services/auth/auth.epics';
+import { PostEpics } from '../app/services/post/post.epics';
 
 @Injectable()
 export class RootEpic {
@@ -9,6 +10,7 @@ export class RootEpic {
 
   constructor(
     private authEpics: AuthEpics,
+    private postEpics: PostEpics,
   ) {
     Array.from(arguments).forEach(epic => {
       this.loadEpic(epic);
