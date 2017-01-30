@@ -12,17 +12,17 @@ export class RootEpic {
     private authEpics: AuthEpics,
     private postEpics: PostEpics,
   ) {
-    Array.from(arguments).forEach(epic => {
-      this.loadEpic(epic);
-    });
+
+    Array.from(arguments)
+      .forEach(this.loadEpics.bind(this));
   }
 
-  loadEpic(epic) {
-    Object.keys(epic).forEach(property => {
-      if (typeof epic[property] === 'function') {
-        this.epics.push(epic[property]);
-      }
-    });
+  loadEpics(epicObject) {
+    const epics = Object.keys(epicObject)
+                    .filter(epic => typeof epicObject[epic] === 'function')
+                    .map(epic => epicObject[epic]);
+
+    this.epics.push(...epics);
   }
 
   combineAll() {

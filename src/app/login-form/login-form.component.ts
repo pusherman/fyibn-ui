@@ -30,11 +30,8 @@ export class LoginFormComponent implements OnInit {
     });
 
     this.loggedIn$
-      .subscribe(loggedIn => {
-        if (loggedIn) {
-          this.router.navigate(['/']);
-        }
-      });
+      .filter(loggedIn => loggedIn === true)
+      .subscribe(() => this.router.navigate(['/']));
   }
 
   onSubmit({ value, valid }: { value: Login, valid: boolean }) {
