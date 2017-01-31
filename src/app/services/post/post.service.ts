@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
+import { normalize, schema } from 'normalizr';
 
 import { ApiService } from '../api/api.service';
+
+
 
 @Injectable()
 export class PostService {
@@ -9,6 +12,27 @@ export class PostService {
   constructor(private api: ApiService) { }
 
   getLatest() {
-    return this.api.get(this.endpoint);
+    const user = new schema.Entity('users');
+
+    const comment = new schema.Entity('comments', {
+      commenter: user
+    });
+
+    const post = new schema.Entity('posts', {
+      user: new schema.Entity('users'),
+      comments: [ comment ]
+    });
+
+    const posts = [ post ];
+
+    return this.api.get(this.endpoint)
+      .map(res => {
+        const response = normalize(res.posts.data, posts);
+
+        response.entities['byPage'] = {};
+        response.entities['byPage'][res.posts.current_page] = response.result;
+
+        return response;
+      });
   }
 }

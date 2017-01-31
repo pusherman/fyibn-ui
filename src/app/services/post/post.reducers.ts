@@ -12,15 +12,17 @@ export interface Post {
 }
 
 export interface Posts {
-  latest: Post[];
-  totalCount: number;
+  byId: {number?: Post};
+  byPage: {number?: number[]};
+  allPosts: number[];
   isFetching: boolean;
   error: boolean;
 }
 
 const INITIAL_STATE: Posts = {
-  latest: [],
-  totalCount: 0,
+  byId: {},
+  byPage: {},
+  allPosts: [],
   isFetching: false,
   error: false,
 };
@@ -33,25 +35,26 @@ export function postReducer(
   switch (action.type) {
     case PostActions.FETCH_POSTS_REQUESTED:
       return Object.assign({}, state, {
-        latest: [],
+        byId: {},
+        allPosts: [],
         isFetching: true,
-        totalCount: 0,
         error: false,
       });
 
     case PostActions.FETCH_POSTS_SUCCESSFUL:
       return Object.assign({}, state, {
-        latest: action.payload.posts,
-        totalCount: action.payload.totalCount,
+        byId: action.payload.entities.posts,
+        byPage: action.payload.entities.byPage,
+        allPosts: state.allPosts.concat(action.payload.result),
         isFetching: false,
         error: false,
       });
 
     case PostActions.FETCH_POSTS_FAILED:
       return Object.assign({}, state, {
-        latest: [],
-        totalCount: 0,
-        isFetching: false,
+        byId: {},
+        allPosts: [],
+        isFetching: true,
         error: action.payload,
       });
 
