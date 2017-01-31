@@ -15,3 +15,66 @@ html, body {
 .clickable {
   cursor: pointer;
 }
+
+.loading-record {
+    margin: 50px auto;
+    border: 2px outset silver;
+    border-radius: 50%;
+    height: 800px;
+    width: 800px;
+    animation-name: spin;
+    animation-duration: 3.6s;
+    animation-timing-function: linear;
+    animation-direction: normal;
+    animation-iteration-count: infinite;
+    background: radial-gradient(
+      closest-side,
+      #ccc 2.2%,
+      #a02 2.2%,
+      #a02 32.5%,
+      #000 32.5%,
+      #000 42.6%,
+      #111 42.6%,
+      #111 49.7%,
+      #000 49.7%,
+      #000 50%,
+      #111 50%,
+      #111 59.7%,
+      #000 59.7%,
+      #000 60%,
+      #111 60%,
+      #111 69.7%,
+      #000 69.7%,
+      #000 70%,
+      #111 70%,
+      #111 79.7%,
+      #000 79.7%,
+      #000 80%,
+      #111 80%,
+      #111 89.7%,
+      #000 89.7%,
+      #000 90%,
+      #111 90%,
+      #111 96.7%,
+      #000 96.7%
+    );
+}
+
+.loading-record p {
+    margin: 0;
+    text-align: center;
+    color: white;
+}
+
+.loading-record-top-line {
+    padding-top: 330px;
+}
+
+.loading-record-bottom-line {
+    padding-top: 90px;
+}
+
+@keyframes spin {
+  0% {transform: rotate(0deg)}
+  100% {transform: rotate(360deg)}
+}

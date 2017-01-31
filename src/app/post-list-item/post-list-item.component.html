@@ -1,32 +1,30 @@
 <div class="post">
 
-  <dope-button
-    class="col dope-button clickable">
+  <dope-button class="col dope-button clickable">
   </dope-button>
 
+  <div
+    class="col clickable"
+    [routerLink]="['post', post.id]">
 
-    <div
-      class="col clickable"
-      [routerLink]="['post', post.id]">
-
-      <div class="title">
-        {{ post.title }} {{ post.id }}
-      </div>
-
-      <div class="meta">
-        0 points added {{ post.created_at | amTimeAgo }}
-        by {{ post.user.name }}
-      </div>
+    <div class="title">
+      {{ post.title }} {{ post.id }}
     </div>
 
-    <div
-      class="col clickable comments"
-      [routerLink]="['post', post.id]">
-
-      1 Comment
-      <div class="meta">
-        last by hayden
-      </div>
+    <div class="meta">
+      0 points added {{ post.created_at | amTimeAgo }}
+      by {{ post.user.name }}
     </div>
+  </div>
+
+  <div
+    class="col clickable comments"
+    [routerLink]="['post', post.id]">
+
+    1 Comment
+    <div class="meta">
+      last by hayden
+    </div>
+  </div>
 
 </div>
