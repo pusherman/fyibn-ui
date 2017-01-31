@@ -11,13 +11,17 @@
 
       <a
         class="nav-link"
-        routerLink="/post/new"
+        routerLink="/submit"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}"
         href="#">
         Submit
       </a>
 
       <a
-        class="nav-link active"
+        class="nav-link"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}"
         routerLink="/"
         href="#">
         Posts

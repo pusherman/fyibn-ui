@@ -6,7 +6,7 @@ import { AuthGuard } from '../services/auth/auth.guard';
 
 const postFormRoute: Routes = [
   {
-    path: 'post/new',
+    path: 'submit',
     component: PostFormComponent,
     canActivate: [ AuthGuard ],
   },
