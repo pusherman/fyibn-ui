@@ -1,13 +1,13 @@
-<div
-  class="post"
-  routerLink="/post">
+<div class="post">
 
   <dope-button
-    class="col dope-button">
+    class="col dope-button clickable">
   </dope-button>
 
   <div
-    class="col">
+    class="col clickable"
+    routerLink="/post">
+
     <div class="title">
       {{ post.title }}
     </div>
@@ -18,10 +18,10 @@
   </div>
 
   <div
-    class="col comments">
+    class="col clickable comments"
+    routerLink="/post">
     1 Comment
-    <div
-      class="meta">
+    <div class="meta">
       last by hayden
     </div>
   </div>

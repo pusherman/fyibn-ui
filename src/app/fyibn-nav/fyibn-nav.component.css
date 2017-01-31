@@ -36,6 +36,7 @@
   color: rgba(255,255,255,.5);
   background-color: transparent;
   border-bottom: .25rem solid transparent;
+  cursor: pointer;
 }
 
 .nav-masthead .nav-link + .nav-link {
@@ -46,8 +47,3 @@
   color: #fff;
   border-bottom-color: #fff;
 }
-
-.nav-masthead .nav-link:hover, .nav-masthead .nav-link:focus {
-  border-bottom-color: rgba(255,255,255,.25);
-}
-
