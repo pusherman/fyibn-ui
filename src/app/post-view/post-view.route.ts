@@ -6,7 +6,7 @@ import { AuthGuard } from '../services/auth/auth.guard';
 
 const postViewRoute: Routes = [
   {
-    path: 'post',
+    path: 'post/:id',
     component: PostViewComponent,
     canActivate: [ AuthGuard ],
   },
