@@ -10,7 +10,7 @@ export class PostActions {
 
   constructor(private ngRedux: NgRedux<IAppState>) {}
 
-  getLatest(): void {
+  getPosts(): void {
     this.ngRedux.dispatch({
       type: PostActions.FETCH_POSTS_REQUESTED,
     });

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { select } from 'ng2-redux';
 import { Observable } from 'rxjs/Observable';
 
@@ -9,12 +9,22 @@ import { PostActions } from '../services/post/post.actions';
   templateUrl: './post-list.component.html',
   styleUrls: ['./post-list.component.css']
 })
-export class PostListComponent implements OnInit {
-  @select(['posts', 'latest']) latestPosts$: Observable<string>;
+export class PostListComponent implements OnInit, OnDestroy {
+  @select(['posts', 'all']) posts$: Observable<number[]>;
+  private postSub;
 
   constructor(private actions: PostActions) { }
 
   ngOnInit() {
-    this.actions.getLatest();
+    this.postSub = this.posts$
+      .subscribe(posts => {
+        if (posts.length < 25) {
+          this.actions.getPosts();
+        }
+      });
+  }
+
+  ngOnDestroy() {
+    this.postSub.unsubscribe();
   }
 }

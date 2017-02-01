@@ -11,7 +11,7 @@ export class PostService {
 
   constructor(private api: ApiService) { }
 
-  getLatest() {
+  getPosts() {
     const user = new schema.Entity('users');
 
     const comment = new schema.Entity('comments', {

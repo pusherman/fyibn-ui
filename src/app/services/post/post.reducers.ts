@@ -2,7 +2,7 @@ import { IAction } from '../../../store';
 import { PostActions } from './post.actions';
 
 export interface Post {
-  id: string;
+  id: number;
   title: string;
   url: string;
   commentCount: number;
@@ -14,7 +14,7 @@ export interface Post {
 export interface Posts {
   byId: {number?: Post};
   byPage: {number?: number[]};
-  allPosts: number[];
+  all: number[];
   isFetching: boolean;
   error: boolean;
 }
@@ -22,7 +22,7 @@ export interface Posts {
 const INITIAL_STATE: Posts = {
   byId: {},
   byPage: {},
-  allPosts: [],
+  all: [],
   isFetching: false,
   error: false,
 };
@@ -36,7 +36,7 @@ export function postReducer(
     case PostActions.FETCH_POSTS_REQUESTED:
       return Object.assign({}, state, {
         byId: {},
-        allPosts: [],
+        all: [],
         isFetching: true,
         error: false,
       });
@@ -45,7 +45,7 @@ export function postReducer(
       return Object.assign({}, state, {
         byId: action.payload.entities.posts,
         byPage: action.payload.entities.byPage,
-        allPosts: state.allPosts.concat(action.payload.result),
+        all: state.all.concat(action.payload.result),
         isFetching: false,
         error: false,
       });
@@ -53,10 +53,14 @@ export function postReducer(
     case PostActions.FETCH_POSTS_FAILED:
       return Object.assign({}, state, {
         byId: {},
-        allPosts: [],
+        all: [],
         isFetching: true,
         error: action.payload,
       });
+
+    // case PostActions.FETCH_POST_SUCCESSFUL:
+    //   const byId = Object.assign({}, state.byId, {[action.payload.id]: action.payload});
+    //   return Object.assign({}, state, { byId });
 
     default:
       return state;

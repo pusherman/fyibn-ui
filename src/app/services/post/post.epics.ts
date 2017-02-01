@@ -16,10 +16,10 @@ export class PostEpics {
     private posts: PostService,
   ) {}
 
-  getLatestPosts = (action$: ActionsObservable<any>) => {
+  getPosts = (action$: ActionsObservable<any>) => {
     return action$.ofType(PostActions.FETCH_POSTS_REQUESTED)
       .switchMap(action => {
-        return this.posts.getLatest()
+        return this.posts.getPosts()
           .map(results => {
             return {
               type: PostActions.FETCH_POSTS_SUCCESSFUL,
