@@ -3,11 +3,11 @@
   subtitle="what's the word">
 </page-header>
 
-<div *ngFor="let post of (latestPosts$ | async)"
+<div *ngFor="let postId of (posts$ | async)"
   class="row">
 
   <post-list-item
     class="col"
-    [post]="post">
+    [postId]="postId">
   </post-list-item>
 </div>
