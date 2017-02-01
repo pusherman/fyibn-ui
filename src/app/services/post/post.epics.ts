@@ -32,4 +32,21 @@ export class PostEpics {
           }));
         });
   }
+
+  getPost = (action$: ActionsObservable<any>) => {
+    return action$.ofType(PostActions.FETCH_POST_REQUESTED)
+      .switchMap(action => {
+        return this.posts.getPost(action.payload)
+          .map(results => {
+            return {
+              type: PostActions.FETCH_POST_SUCCESSFUL,
+              payload: results,
+            };
+          })
+          .catch(error => Observable.of({
+            type: PostActions.FETCH_POST_FAILED,
+            payload: error,
+          }));
+        });
+  }
 }

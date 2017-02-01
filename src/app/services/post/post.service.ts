@@ -11,6 +11,10 @@ export class PostService {
 
   constructor(private api: ApiService) { }
 
+  getPost(id: number) {
+    return this.api.get(`${this.endpoint}/${id}`).map(res => res);
+  }
+
   getPosts() {
     const user = new schema.Entity('users');
 
