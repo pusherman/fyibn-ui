@@ -30,7 +30,12 @@ export class AuthActions {
 
   logout(): void {
     localStorage.clear();
-    this.ngRedux.dispatch({ type: AuthActions.AUTH_ENDED });
     this.router.navigate(['/login']);
+
+    // give the components enough time to unsubscribe from
+    // anything being watched before we clear the store
+    setTimeout(() => {
+      this.ngRedux.dispatch({ type: AuthActions.AUTH_ENDED });
+    }, 500);
   }
 }

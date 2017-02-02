@@ -1,5 +1,6 @@
 import { IAction } from '../../../store';
 import { PostActions } from './post.actions';
+import { AuthActions } from '../auth/auth.actions';
 
 export interface Post {
   id: number;
@@ -57,6 +58,9 @@ export function postReducer(
         isFetching: true,
         error: action.payload,
       });
+
+    case AuthActions.AUTH_ENDED:
+      return Object.assign({}, state, INITIAL_STATE);
 
     // case PostActions.FETCH_POST_SUCCESSFUL:
     //   const byId = Object.assign({}, state.byId, {[action.payload.id]: action.payload});
