@@ -54,17 +54,18 @@ export function postReducer(
     case PostActions.FETCH_POSTS_FAILED:
       return Object.assign({}, state, {
         byId: {},
+        byPage: [],
         all: [],
         isFetching: true,
         error: action.payload,
       });
 
+    case PostActions.FETCH_POST_SUCCESSFUL:
+      const byId = Object.assign({}, state.byId, {[action.payload.id]: action.payload});
+      return Object.assign({}, state, { byId });
+
     case AuthActions.AUTH_ENDED:
       return Object.assign({}, state, INITIAL_STATE);
-
-    // case PostActions.FETCH_POST_SUCCESSFUL:
-    //   const byId = Object.assign({}, state.byId, {[action.payload.id]: action.payload});
-    //   return Object.assign({}, state, { byId });
 
     default:
       return state;
