@@ -37,7 +37,7 @@ export function authReducer(state: IAuth = INITIAL_STATE, action: IAction): IAut
       });
 
     case AuthActions.AUTH_ENDED:
-      return state;
+      return Object.assign({}, state, INITIAL_STATE);
 
     default:
       return state;

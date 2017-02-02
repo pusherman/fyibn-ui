@@ -20,11 +20,5 @@ const appReducer = combineReducers<IAppState>({
 });
 
 export const rootReducer = (state, action) => {
-  if (action.type === AuthActions.AUTH_ENDED ||
-      action.payload === AuthActions.REFRESH_TOKEN_FAILED) {
-    state = undefined;
-    localStorage.clear();
-  }
-
   return appReducer(state, action);
 };
