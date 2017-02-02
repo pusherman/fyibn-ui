@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { select } from 'ng2-redux';
 import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
 
 import { PostActions } from '../services/post/post.actions';
 
@@ -11,12 +12,12 @@ import { PostActions } from '../services/post/post.actions';
 })
 export class PostListComponent implements OnInit, OnDestroy {
   @select(['posts', 'all']) posts$: Observable<number[]>;
-  private postSub;
+  private postsSub: Subscription;
 
   constructor(private actions: PostActions) { }
 
   ngOnInit() {
-    this.postSub = this.posts$
+    this.postsSub = this.posts$
       .subscribe(posts => {
         if (posts.length < 25) {
           this.actions.getPosts();
@@ -25,6 +26,6 @@ export class PostListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.postSub.unsubscribe();
+    this.postsSub.unsubscribe();
   }
 }

@@ -8,14 +8,21 @@
   <div
     class="col">
     <div class="title">
-      Stik Figa - Central Standard Time
+      {{ post.title }}
     </div>
 
     <div class="meta">
-      0 points &middot; by hayden on Jan 27 at 8:17am
+      0 points &middot;
+      <by-line
+        [userId]="post.user"
+        [byDate]="post.created_at">
+      </by-line>
     </div>
   </div>
 </div>
 
-<comment-list></comment-list>
+<comment-list
+  [comments]="post.comments">
+</comment-list>
+
 <add-comment></add-comment>

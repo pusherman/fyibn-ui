@@ -10,7 +10,7 @@ import { Post } from '../services/post/post.reducers';
   styleUrls: ['./post-list-item.component.css']
 })
 export class PostListItemComponent implements OnInit {
-  @Input() postId;
+  @Input() postId: number;
   @select(['posts', 'byId']) postsById$: Observable<Post[]>;
   public post: Post;
 
@@ -23,7 +23,4 @@ export class PostListItemComponent implements OnInit {
       });
 
   }
-
-
-
 }
