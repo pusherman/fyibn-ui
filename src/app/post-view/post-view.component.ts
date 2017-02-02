@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
 import { select } from 'ng2-redux';
 
 import { PostActions } from '../services/post/post.actions';
@@ -11,9 +12,10 @@ import { Post } from '../services/post/post.reducers';
   templateUrl: './post-view.component.html',
   styleUrls: ['./post-view.component.css']
 })
-export class PostViewComponent implements OnInit {
+export class PostViewComponent implements OnInit, OnDestroy {
   @select(['posts', 'byId']) postsById$: Observable<Post[]>;
   public post: Post;
+  private postSub: Subscription;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,8 +28,12 @@ export class PostViewComponent implements OnInit {
     });
   }
 
+  ngOnDestroy() {
+    this.postSub.unsubscribe();
+  }
+
   loadPost(id: number): void {
-    this.postsById$
+    this.postSub = this.postsById$
       .subscribe(posts => {
         if (posts[id] !== undefined) {
           this.post = posts[id];
