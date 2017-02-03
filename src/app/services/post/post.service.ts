@@ -3,8 +3,6 @@ import { normalize, schema } from 'normalizr';
 
 import { ApiService } from '../api/api.service';
 
-
-
 @Injectable()
 export class PostService {
   private endpoint = 'posts';
