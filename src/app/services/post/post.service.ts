@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { normalize, schema } from 'normalizr';
+import { normalize } from 'normalizr';
 
 import { ApiService } from '../api/api.service';
+import { postsSchema } from './post.schema';
 
 @Injectable()
 export class PostService {
@@ -29,7 +31,7 @@ export class PostService {
 
     return this.api.get(this.endpoint)
       .map(res => {
-        const response = normalize(res.posts.data, posts);
+        const response = normalize(res.posts.data, postsSchema);
 
         response.entities['byPage'] = {};
         response.entities['byPage'][res.posts.current_page] = response.result;
