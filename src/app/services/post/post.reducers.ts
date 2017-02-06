@@ -12,9 +12,17 @@ export interface Post {
   created_at: Date;
 }
 
+export interface Pagination {
+  currentPage: number;
+  lastPage: number;
+  perPage: number;
+  totalItems: number;
+}
+
 export interface Posts {
   byId: {number?: Post};
   byPage: {number?: number[]};
+  pagination: Pagination;
   all: number[];
   isFetching: boolean;
   error: boolean;
@@ -24,6 +32,7 @@ const INITIAL_STATE: Posts = {
   byId: {},
   byPage: {},
   all: [],
+  pagination: <Pagination>{},
   isFetching: false,
   error: false,
 };
@@ -45,6 +54,7 @@ export function postReducer(
         byId: Object.assign({}, state.byId, action.payload.entities.posts),
         byPage: Object.assign({}, state.byPage, action.payload.entities.byPage),
         all: state.all.concat(action.payload.result),
+        pagination: action.payload.entities.pagination,
         isFetching: false,
         error: false,
       });
