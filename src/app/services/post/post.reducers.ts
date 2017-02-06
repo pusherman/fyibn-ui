@@ -36,16 +36,14 @@ export function postReducer(
   switch (action.type) {
     case PostActions.FETCH_POSTS_REQUESTED:
       return Object.assign({}, state, {
-        byId: {},
-        all: [],
         isFetching: true,
         error: false,
       });
 
     case PostActions.FETCH_POSTS_SUCCESSFUL:
       return Object.assign({}, state, {
-        byId: action.payload.entities.posts,
-        byPage: action.payload.entities.byPage,
+        byId: Object.assign({}, state.byId, action.payload.entities.posts),
+        byPage: Object.assign({}, state.byPage, action.payload.entities.byPage),
         all: state.all.concat(action.payload.result),
         isFetching: false,
         error: false,
@@ -53,10 +51,7 @@ export function postReducer(
 
     case PostActions.FETCH_POSTS_FAILED:
       return Object.assign({}, state, {
-        byId: {},
-        byPage: [],
-        all: [],
-        isFetching: true,
+        isFetching: false,
         error: action.payload,
       });
 

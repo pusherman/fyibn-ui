@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { normalize, schema } from 'normalizr';
+import { Observable } from 'rxjs/Observable';
 import { normalize } from 'normalizr';
 
 import { ApiService } from '../api/api.service';
+import { Post, Posts } from './post.reducers';
 import { postsSchema } from './post.schema';
 
 @Injectable()
@@ -11,30 +12,29 @@ export class PostService {
 
   constructor(private api: ApiService) { }
 
-  getPost(id: number) {
-    return this.api.get(`${this.endpoint}/${id}`).map(res => res);
+  getPost(id: number): Observable<Post> {
+    const url = `${this.endpoint}/${id}`;
+
+    return this.api.get(url)
+      .map(res => res);
   }
 
-  getPosts() {
-    const user = new schema.Entity('users');
+  getPosts(page = 1): Observable<Posts> {
+    const url = `${this.endpoint}?page=${page}`;
 
-    const comment = new schema.Entity('comments', {
-      commenter: user
-    });
-
-    const post = new schema.Entity('posts', {
-      user: new schema.Entity('users'),
-      comments: [ comment ]
-    });
-
-    const posts = [ post ];
-
-    return this.api.get(this.endpoint)
+    return this.api.get(url)
       .map(res => {
         const response = normalize(res.posts.data, postsSchema);
 
         response.entities['byPage'] = {};
         response.entities['byPage'][res.posts.current_page] = response.result;
+
+        response.entities['pagination'] = {
+          currentPage: res.posts.current_page,
+          lastPage: res.posts.last_page,
+          perPage: res.posts.per_page,
+          totalItems: res.posts.total,
+        };
 
         return response;
       });

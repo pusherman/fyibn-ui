@@ -1,7 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { select } from 'ng2-redux';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
+import 'rxjs/add/operator/map';
 
 import { PostActions } from '../services/post/post.actions';
 
@@ -11,16 +13,32 @@ import { PostActions } from '../services/post/post.actions';
   styleUrls: ['./post-list.component.css']
 })
 export class PostListComponent implements OnInit, OnDestroy {
-  @select(['posts', 'all']) posts$: Observable<number[]>;
-  private postsSub: Subscription;
+  @select(['posts', 'byPage']) postsByPage$: Observable<any>;
 
-  constructor(private actions: PostActions) { }
+  public posts: number[];
+  private postsSub: Subscription;
+  private page: Observable<number>;
+
+  constructor(
+    private actions: PostActions,
+    private route: ActivatedRoute,
+  ) { }
 
   ngOnInit() {
-    this.postsSub = this.posts$
-      .subscribe(posts => {
-        if (posts.length < 25) {
-          this.actions.getPosts();
+    this.route
+      .queryParams
+      .map(params => +params['page'] || 1)
+      .subscribe(page => this.loadPosts(page));
+  }
+
+  loadPosts(page: number): void {
+    this.postsSub = this.postsByPage$
+      .subscribe(pages => {
+        if (pages[page] !== undefined) {
+          this.posts = pages[page];
+
+        } else {
+          this.actions.getPosts(page);
         }
       });
   }

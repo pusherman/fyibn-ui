@@ -14,9 +14,10 @@ export class PostActions {
 
   constructor(private ngRedux: NgRedux<IAppState>) {}
 
-  getPosts(): void {
+  getPosts(page): void {
     this.ngRedux.dispatch({
       type: PostActions.FETCH_POSTS_REQUESTED,
+      payload: { page },
     });
   }
 
