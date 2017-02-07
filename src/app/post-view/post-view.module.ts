@@ -10,7 +10,6 @@ import { PostViewRoutingModule } from './post-view.route';
 import { CommentListComponent } from '../comment-list/comment-list.component';
 import { CommentListItemComponent } from '../comment-list-item/comment-list-item.component';
 import { AddCommentComponent } from '../add-comment/add-comment.component';
-import { ByLineComponent } from '../by-line/by-line.component';
 
 @NgModule({
   imports: [
@@ -24,7 +23,6 @@ import { ByLineComponent } from '../by-line/by-line.component';
     CommentListComponent,
     CommentListItemComponent,
     AddCommentComponent,
-    ByLineComponent,
   ],
   providers: [
   ],

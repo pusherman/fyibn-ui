@@ -13,7 +13,7 @@ import { PostActions } from '../services/post/post.actions';
   styleUrls: ['./post-list.component.css']
 })
 export class PostListComponent implements OnInit, OnDestroy {
-  @select(['posts', 'byPage']) postsByPage$: Observable<any>;
+  @select(['posts']) posts$: Observable<any>;
 
   public posts: number[];
   private postsSub: Subscription;
@@ -32,15 +32,23 @@ export class PostListComponent implements OnInit, OnDestroy {
   }
 
   loadPosts(page: number): void {
-    this.postsSub = this.postsByPage$
-      .subscribe(pages => {
-        if (pages[page] !== undefined) {
-          this.posts = pages[page];
+    this.postsSub = this.posts$
+      .subscribe(posts =>
+        this.setPostsFromStore(posts, page)
+      );
+  }
 
-        } else {
-          this.actions.getPosts(page);
-        }
-      });
+  setPostsFromStore(posts, page) {
+    if (posts.isFetching) {
+      return;
+    }
+
+    if (posts.byPage[page] !== undefined) {
+      this.posts = posts.byPage[page];
+
+    } else {
+      this.actions.getPosts(page);
+    }
   }
 
   ngOnDestroy() {
