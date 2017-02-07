@@ -32,7 +32,12 @@ const INITIAL_STATE: Posts = {
   byId: {},
   byPage: {},
   all: [],
-  pagination: <Pagination>{},
+  pagination: {
+    currentPage: 1,
+    lastPage: 1,
+    perPage: 25,
+    totalItems: 0,
+  },
   isFetching: false,
   error: false,
 };
