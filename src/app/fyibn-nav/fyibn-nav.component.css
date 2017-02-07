@@ -18,6 +18,11 @@
 
 .masthead {
   margin-bottom: 2rem;
+  background: #333;
+  z-index: 1000;
+  height: 77px;
+  opacity: .9;
+  padding-right: 20px;
 }
 
 .inner {
