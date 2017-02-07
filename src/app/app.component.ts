@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DevToolsExtension, NgRedux, select } from 'ng2-redux';
 import { createEpicMiddleware } from 'redux-observable';
 import { Observable } from 'rxjs/Observable';
+import { Router, NavigationEnd } from '@angular/router';
 
 import { RootEpic } from '../store/epics.index';
 import { IAppState, rootReducer } from '../store/index';
@@ -21,6 +22,7 @@ export class AppComponent implements OnInit {
     private ngRedux: NgRedux<IAppState>,
     private devTool: DevToolsExtension,
     private rootEpic: RootEpic,
+    private router: Router,
   ) {
     const middleware = [
       createEpicMiddleware(this.rootEpic.combineAll()),
@@ -43,5 +45,12 @@ export class AppComponent implements OnInit {
     );
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.router.events.subscribe((evt) => {
+      if (evt instanceof NavigationEnd === false) {
+        return;
+      }
+      document.body.scrollTop = 0;
+    });
+  }
 }
