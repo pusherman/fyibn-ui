@@ -30,7 +30,7 @@ export function userReducer(
   switch (action.type) {
     case PostActions.FETCH_POSTS_SUCCESSFUL:
       return Object.assign({}, state, {
-        byId: action.payload.entities.users,
+        byId: Object.assign({}, state.byId, action.payload.entities.users),
         isFetching: false,
         error: false,
       });
