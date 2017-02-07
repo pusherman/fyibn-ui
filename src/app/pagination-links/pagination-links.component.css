@@ -1,0 +1,14 @@
+.page-link {
+  position: relative;
+  display: block;
+  padding: 0.5rem 0.75rem;
+  line-height: 1.25;
+  color: #F8F8F8;
+  background-color: #333;
+  border: 1px solid #F8F8F8;
+}
+
+.pagination {
+  justify-content: center;
+  margin-top: 40px;
+}
