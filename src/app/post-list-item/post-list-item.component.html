@@ -13,7 +13,9 @@
 
     <div class="meta">
       0 points added {{ post.created_at | amTimeAgo }}
-      by {{ post.user.name }}
+       <by-line
+        [userId]="post.user">
+      </by-line>
     </div>
   </div>
 
