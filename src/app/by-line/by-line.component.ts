@@ -15,15 +15,17 @@ export class ByLineComponent implements OnInit, OnDestroy {
   @Input() userId: number;
   @Input() byDate: Date;
   @select(['users', 'byId']) users$: Observable<User[]>;
+
   public user: User;
   private subscription: Subscription;
 
   constructor() { }
 
   ngOnInit() {
-    this.subscription = this.users$.subscribe((users) => {
-      this.user = users[this.userId];
-    });
+    this.subscription = this.users$
+      .subscribe((users) => {
+        this.user = users[this.userId];
+      });
   }
 
   ngOnDestroy() {

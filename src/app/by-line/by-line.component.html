@@ -1,2 +1,4 @@
 by {{ user.name }}
-on {{ byDate | amDateFormat:'LL' }}
+<span *ngIf="byDate">
+  on {{ byDate | amDateFormat:'LL' }}
+</span>
