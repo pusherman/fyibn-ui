@@ -15,8 +15,8 @@ export class AuthService {
     const headers: Headers = this.getTokenHeaders();
     const credentials: string = this.getTokenQueryParams({
       grant_type: 'password',
-      client_id: '5',
-      client_secret: 'ybsD816Et8XKbAOx4kCEwDt2YdmwwQcvxOI36cCm',
+      client_id: '2',
+      client_secret: '9zlNvdmZW5B73IqVpBbTIYeIUBJnjkpTi8PdM18S',
       username: email,
       password,
     });
