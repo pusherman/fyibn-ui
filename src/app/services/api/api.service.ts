@@ -29,8 +29,7 @@ export class ApiService {
   }
 
   post(url: string, body: any, search?: URLSearchParams) {
-    // options.body = body;
-    return this.request(RequestMethod.Post, url, search);
+    return this.request(RequestMethod.Post, url, search, body);
   }
 
   // put(url: string, options?: RequestOptionsArgs) {
@@ -60,10 +59,15 @@ export class ApiService {
     return new Headers(authHeader);
   }
 
-  private request(method: RequestMethod, urn: string, search?: URLSearchParams) {
+  private request(
+    method: RequestMethod,
+    urn: string,
+    search?: URLSearchParams,
+    body?: any,
+  ) {
     const url = this.buildUrl(urn);
     const headers = this.getAuthHeaders();
-    const request = new Request({ method, url, headers, search });
+    const request = new Request({ method, url, headers, search, body });
 
     return this.http.request(request)
       .map((response: Response) => {
