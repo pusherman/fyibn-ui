@@ -39,7 +39,7 @@ export class PostListComponent implements OnInit, OnDestroy {
   }
 
   setPostsFromStore(posts, page) {
-    if (posts.isFetching) {
+    if (posts.isFetching || posts.error !== false) {
       return;
     }
 
