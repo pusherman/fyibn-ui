@@ -3,6 +3,7 @@ import { combineEpics } from 'redux-observable';
 
 import { AuthEpics } from '../app/services/auth/auth.epics';
 import { PostEpics } from '../app/services/post/post.epics';
+import { UserEpics } from '../app/services/user/user.epics';
 
 @Injectable()
 export class RootEpic {
@@ -11,6 +12,7 @@ export class RootEpic {
   constructor(
     private authEpics: AuthEpics,
     private postEpics: PostEpics,
+    private userEpics: UserEpics,
   ) {
 
     Array.from(arguments)

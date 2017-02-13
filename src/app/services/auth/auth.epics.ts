@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map';
 
 import { IAction } from '../../../store';
 
-// import { UserActions } from '../user/user.actions';
+import { UserActions } from '../user/user.actions';
 
 import { AuthActions } from './auth.actions';
 import { AuthService } from './auth.service';
@@ -20,7 +20,7 @@ export class AuthEpics {
 
   login = (action$: ActionsObservable<IAction>) => {
     const authSuccessful = payload => ({ type: AuthActions.AUTH_SUCCESSFUL, payload });
-    // const fetchMe = () => ({ type: UserActions.FETCH_ME_REQUESTED });
+    const fetchMe = () => ({ type: UserActions.FETCH_ME_REQUESTED });
 
     return action$.ofType(AuthActions.AUTH_REQUESTED)
       .switchMap(action => {
@@ -28,7 +28,7 @@ export class AuthEpics {
         return this.auth.login(username, password)
           .flatMap(payload => Observable.of(
             authSuccessful(payload),
-            // fetchMe(),
+            fetchMe(),
           ))
           .catch(payload => Observable.of({
             type: AuthActions.AUTH_FAILED,
