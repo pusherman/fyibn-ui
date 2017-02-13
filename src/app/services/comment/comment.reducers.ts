@@ -2,12 +2,12 @@ import { IAction } from '../../../store';
 import { CommentActions } from './comment.actions';
 
 export interface Comment {
-  id: number;
+  id?: number;
   body: string;
-  userId: number;
+  userId?: number;
   postId: number;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 export interface Comments {

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from 'ng2-redux';
 import { IAppState } from '../../../store';
+import { Comment } from './comment.reducers';
 
 @Injectable()
 export class CommentActions {
@@ -10,9 +11,10 @@ export class CommentActions {
 
   constructor(private ngRedux: NgRedux<IAppState>) {}
 
-  create(): void {
+  create(comment: Comment): void {
     this.ngRedux.dispatch({
       type: CommentActions.CREATE_COMMENT_REQUESTED,
+      payload: comment,
     });
   }
 }

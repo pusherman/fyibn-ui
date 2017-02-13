@@ -1,7 +1,11 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
+import { select } from 'ng2-redux';
 
 import { Comment } from './add-comment.interface';
+import { CommentActions } from '../services/comment/comment.actions';
 
 @Component({
   selector: 'add-comment',
@@ -10,29 +14,32 @@ import { Comment } from './add-comment.interface';
 })
 export class AddCommentComponent implements OnInit, OnDestroy {
   @Input() postId: number;
+  @select() users$: Observable<any>;
+
   public comment: FormGroup;
+  private subscription: Subscription;
 
   constructor(
     private formBuilder: FormBuilder,
+    private actions: CommentActions,
   ) { }
 
   ngOnInit() {
     this.comment = this.formBuilder.group({
       body: ['', Validators.required],
     });
-
-    console.log(this.postId);
   }
 
   ngOnDestroy() {
-    console.log('destroying add comment');
+    this.subscription.unsubscribe();
   }
 
   onSubmit({ value, valid }: { value: Comment, valid: boolean }) {
     if (valid) {
-      console.log('submitting', value.body, this.postId);
-      // this.actions.addComment(value.body);
+      this.actions.create({
+        body: value.body,
+        postId: this.postId,
+      });
     }
   }
-
 }

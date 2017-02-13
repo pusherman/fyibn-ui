@@ -4,6 +4,7 @@ import { combineEpics } from 'redux-observable';
 import { AuthEpics } from '../app/services/auth/auth.epics';
 import { PostEpics } from '../app/services/post/post.epics';
 import { UserEpics } from '../app/services/user/user.epics';
+import { CommentEpics } from '../app/services/comment/comment.epics';
 
 @Injectable()
 export class RootEpic {
@@ -13,6 +14,7 @@ export class RootEpic {
     private authEpics: AuthEpics,
     private postEpics: PostEpics,
     private userEpics: UserEpics,
+    private commentEpics: CommentEpics,
   ) {
 
     Array.from(arguments)
