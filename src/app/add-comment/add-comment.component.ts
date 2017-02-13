@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-comment.component.css']
 })
 export class AddCommentComponent implements OnInit {
+  @Input() postId: number;
 
   constructor() { }
 
