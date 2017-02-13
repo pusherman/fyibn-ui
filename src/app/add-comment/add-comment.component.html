@@ -1,16 +1,19 @@
 <div class="comment-form">
-  <form>
-    <div
-      class="form-group">
+  <form
+    novalidate
+    (ngSubmit)="onSubmit(comment)"
+    [formGroup]="comment">
 
+    <div class="form-group">
       <label
-        for="comment">
+        for="body">
         Say Sumpin'
       </label>
 
       <textarea
         class="form-control"
-        id="comment"
+        id="body"
+        formControlName="body"
         rows="3">
       </textarea>
     </div>

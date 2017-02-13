@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MomentModule } from 'angular2-moment';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { SharedModule } from '../shared/shared.module';
 
@@ -17,6 +18,7 @@ import { AddCommentComponent } from '../add-comment/add-comment.component';
     CommonModule,
     SharedModule,
     MomentModule,
+    ReactiveFormsModule,
   ],
   declarations: [
     PostViewComponent,
