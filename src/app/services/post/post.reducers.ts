@@ -71,8 +71,9 @@ export function postReducer(
       });
 
     case PostActions.FETCH_POST_SUCCESSFUL:
-      const byId = Object.assign({}, state.byId, {[action.payload.id]: action.payload});
-      return Object.assign({}, state, { byId });
+      return Object.assign({}, state, {
+        byId: Object.assign({}, state.byId, action.payload.entities.posts),
+      });
 
     case AuthActions.AUTH_ENDED:
       return Object.assign({}, state, INITIAL_STATE);
