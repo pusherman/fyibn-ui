@@ -1,6 +1,7 @@
 import { IAction } from '../../../store';
 import { PostActions } from './post.actions';
 import { AuthActions } from '../auth/auth.actions';
+import { CommentActions } from '../comment/comment.actions';
 
 export interface Post {
   id: number;
@@ -10,6 +11,7 @@ export interface Post {
   favoriteCount: number;
   lastCommentBy: string;
   created_at: Date;
+  comments: number[],
 }
 
 export interface Pagination {
@@ -73,6 +75,15 @@ export function postReducer(
     case PostActions.FETCH_POST_SUCCESSFUL:
       return Object.assign({}, state, {
         byId: Object.assign({}, state.byId, action.payload.entities.posts),
+      });
+
+    case CommentActions.CREATE_COMMENT_SUCCESSFUL:
+      return Object.assign({}, state, {
+        byId: Object.assign({}, state.byId, {
+          [action.payload.post_id]: Object.assign({}, state.byId[action.payload.post_id], {
+            comments: [action.payload.id, ...state.byId[action.payload.post_id].comments]
+          })
+        })
       });
 
     case AuthActions.AUTH_ENDED:
