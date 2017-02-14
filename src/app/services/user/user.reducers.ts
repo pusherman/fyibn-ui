@@ -56,8 +56,11 @@ export function userReducer(
     case PostActions.FETCH_POSTS_SUCCESSFUL:
       return Object.assign({}, state, {
         byId: Object.assign({}, state.byId, action.payload.entities.users),
-        isFetching: false,
-        error: false,
+      });
+
+    case PostActions.FETCH_POST_SUCCESSFUL:
+      return Object.assign({}, state, {
+        byId: Object.assign({}, state.byId, action.payload.entities.users),
       });
 
     case AuthActions.AUTH_ENDED:
