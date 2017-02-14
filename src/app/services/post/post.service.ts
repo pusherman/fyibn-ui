@@ -4,7 +4,7 @@ import { normalize } from 'normalizr';
 
 import { ApiService } from '../api/api.service';
 import { Post, Posts } from './post.reducers';
-import { postsSchema } from './post.schema';
+import { postsSchema, postSchema } from './post.schema';
 
 @Injectable()
 export class PostService {
@@ -16,7 +16,7 @@ export class PostService {
     const url = `${this.endpoint}/${id}`;
 
     return this.api.get(url)
-      .map(res => res);
+      .map(res => normalize(res, postSchema));
   }
 
   getPosts(page = 1): Observable<Posts> {
