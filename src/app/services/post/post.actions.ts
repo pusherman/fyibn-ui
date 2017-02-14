@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from 'ng2-redux';
+
 import { IAppState } from '../../../store';
 
 @Injectable()
@@ -24,7 +25,7 @@ export class PostActions {
   getPost(id): void {
     this.ngRedux.dispatch({
       type: PostActions.FETCH_POST_REQUESTED,
-      payload: { id },
+      payload: id,
     });
   }
 }
