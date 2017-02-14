@@ -12,9 +12,8 @@ import { CommentActions } from '../services/comment/comment.actions';
   templateUrl: './add-comment.component.html',
   styleUrls: ['./add-comment.component.css']
 })
-export class AddCommentComponent implements OnInit, OnDestroy {
+export class AddCommentComponent implements OnInit {
   @Input() postId: number;
-  @select() users$: Observable<any>;
 
   public comment: FormGroup;
   private subscription: Subscription;
@@ -28,10 +27,6 @@ export class AddCommentComponent implements OnInit, OnDestroy {
     this.comment = this.formBuilder.group({
       body: ['', Validators.required],
     });
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
   }
 
   onSubmit({ value, valid }: { value: Comment, valid: boolean }) {
