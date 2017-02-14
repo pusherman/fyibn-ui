@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { select } from 'ng2-redux';
 
 import { PostActions } from '../services/post/post.actions';
-import { Post } from '../services/post/post.reducers';
+import { Posts, Post } from '../services/post/post.reducers';
 
 @Component({
   selector: 'post-view',
@@ -13,9 +13,10 @@ import { Post } from '../services/post/post.reducers';
   styleUrls: ['./post-view.component.css']
 })
 export class PostViewComponent implements OnInit, OnDestroy {
-  @select(['posts', 'byId']) postsById$: Observable<Post[]>;
+  @select() posts$: Observable<Posts>;
+
   public post: Post;
-  private postSub: Subscription;
+  private subscription: Subscription;
 
   constructor(
     private route: ActivatedRoute,
@@ -29,14 +30,15 @@ export class PostViewComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.postSub.unsubscribe();
+    this.subscription
+      .unsubscribe();
   }
 
   loadPost(id: number): void {
-    this.postSub = this.postsById$
+    this.subscription = this.posts$
       .subscribe(posts => {
-        if (posts[id] !== undefined) {
-          this.post = posts[id];
+        if (posts.byId[id] !== undefined) {
+          this.post = posts.byId[id];
 
         } else {
           this.actions.getPost(id);
