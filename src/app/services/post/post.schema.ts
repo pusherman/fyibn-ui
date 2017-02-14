@@ -11,4 +11,7 @@ const post = new schema.Entity('posts', {
   comments: [ comment ]
 });
 
-export const postsSchema = [ post ];
+const postsSchema = [ post ];
+const postSchema = post;
+
+export { postsSchema, postSchema }
