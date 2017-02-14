@@ -1,4 +1,5 @@
 import { IAction } from '../../../store';
+import { PostActions } from '../post/post.actions';
 import { CommentActions } from './comment.actions';
 
 export interface Comment {
@@ -30,24 +31,26 @@ export function commentReducer(
   switch (action.type) {
     case CommentActions.CREATE_COMMENT_REQUESTED:
       return Object.assign({}, state, {
-        byId: {},
-        all: [],
         isFetching: true,
         error: false,
       });
 
     case CommentActions.CREATE_COMMENT_SUCCESSFUL:
       return Object.assign({}, state, {
-        byId: action.payload.entities.comments,
+        byId: Object.assign({}, state.byId, {[action.payload.id]: action.payload}),
         isFetching: false,
         error: false,
       });
 
     case CommentActions.CREATE_COMMENT_FAILED:
       return Object.assign({}, state, {
-        byId: {},
         isFetching: true,
         error: action.payload,
+      });
+
+    case PostActions.FETCH_POSTS_SUCCESSFUL:
+      return Object.assign({}, state, {
+        byId: Object.assign({}, state.byId, action.payload.entities.comments),
       });
 
     default:
