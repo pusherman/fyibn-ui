@@ -1,17 +1,9 @@
-<div
-  class="comment">
+<div class="comment">
   <p>
-    Here is a comment!!!Here is a comment!!!Here is a comment!!!Here is a comment!!!Here is a comment!!!Here is a comment!!!Here is a comment!!!Here is a comment!!!Here is a comment!!!Here is a comment!!!Here is a comment!!!
-
-    Here is a comment!!!Here is a comment!!!
-    Here is a comment!!!
-    Here is a comment!!!
-    Here is a comment!!!
-    Here is a comment!!!
-    Here is a comment!!!
+    {{ comment.body }}
   </p>
-  <span
-    class="meta">
-    by corey on Jan 13 at 9:15am
+  <span class="meta">
+    by corey on
+    {{ comment.created_at | amDateFormat: 'MMM MM h:mm a' }}
   </span>
 </div>

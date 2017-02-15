@@ -1,7 +1,8 @@
-<div *ngFor="let comment of comments"
+<div *ngFor="let commentId of comments"
   class="row">
 
   <comment-list-item
-    class="col">
+    class="col"
+    [commentId]="commentId">
   </comment-list-item>
 </div>
