@@ -81,7 +81,10 @@ export function postReducer(
       return Object.assign({}, state, {
         byId: Object.assign({}, state.byId, {
           [action.payload.post_id]: Object.assign({}, state.byId[action.payload.post_id], {
-            comments: [action.payload.id, ...state.byId[action.payload.post_id].comments]
+            comments: [
+              ...state.byId[action.payload.post_id].comments,
+              action.payload.id
+            ]
           })
         })
       });
