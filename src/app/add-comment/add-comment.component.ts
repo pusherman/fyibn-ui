@@ -4,18 +4,21 @@ import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import { select } from 'ng2-redux';
 
-import { Comment } from './add-comment.interface';
+import { CommentForm } from './add-comment.interface';
 import { CommentActions } from '../services/comment/comment.actions';
+import { Comments } from '../services/comment/comment.reducers';
 
 @Component({
   selector: 'add-comment',
   templateUrl: './add-comment.component.html',
   styleUrls: ['./add-comment.component.css']
 })
-export class AddCommentComponent implements OnInit {
+export class AddCommentComponent implements OnInit, OnDestroy {
   @Input() postId: number;
+  @select(['comments', 'isFetching']) isSubmitting$: Observable<boolean>
 
   public comment: FormGroup;
+  public isSubmitting = false;
   private subscription: Subscription;
 
   constructor(
@@ -27,9 +30,19 @@ export class AddCommentComponent implements OnInit {
     this.comment = this.formBuilder.group({
       body: ['', Validators.required],
     });
+
+    this.subscription = this.isSubmitting$
+      .subscribe(isSubmitting => {
+        this.isSubmitting = isSubmitting;
+      });
   }
 
-  onSubmit({ value, valid }: { value: Comment, valid: boolean }) {
+  ngOnDestroy() {
+    this.subscription
+      .unsubscribe();
+  }
+
+  onSubmit({ value, valid }: { value: CommentForm, valid: boolean }) {
     if (valid) {
       this.actions.create({
         body: value.body,
