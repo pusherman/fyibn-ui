@@ -35,6 +35,8 @@ export class AddCommentComponent implements OnInit {
         body: value.body,
         postId: this.postId,
       });
+
+      this.comment.setValue({ body: null });
     }
   }
 }
