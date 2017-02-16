@@ -5,10 +5,10 @@ import { CommentActions } from './comment.actions';
 export interface Comment {
   id?: number;
   body: string;
-  userId?: number;
-  postId: number;
-  createdAt?: Date;
-  updatedAt?: Date;
+  user_id?: number;
+  post_id: number;
+  created_at?: Date;
+  updated_at?: Date;
 }
 
 export interface Comments {
