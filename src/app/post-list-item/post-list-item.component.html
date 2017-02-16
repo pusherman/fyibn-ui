@@ -26,6 +26,10 @@
     1 Comment
     <div class="meta">
       last by hayden
+    <div
+      class="meta"
+      *ngIf="lastCommenter">
+      last by {{ lastCommenter.name }}
     </div>
   </div>
 
