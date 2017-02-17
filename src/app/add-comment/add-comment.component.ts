@@ -46,7 +46,7 @@ export class AddCommentComponent implements OnInit, OnDestroy {
     if (valid) {
       this.actions.create({
         body: value.body,
-        postId: this.postId,
+        post_id: this.postId,
       });
 
       this.comment.setValue({ body: null });
