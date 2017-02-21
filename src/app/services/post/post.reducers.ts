@@ -84,7 +84,7 @@ export function postReducer(
             comments: [
               ...state.byId[action.payload.post_id].comments,
               action.payload.id
-            ]
+            ],
           })
         })
       });
