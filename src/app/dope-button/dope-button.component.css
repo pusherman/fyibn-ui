@@ -1,9 +1,20 @@
 .dope {
-  background: red;
   height: 50px;
   width: 50px;
 }
 
 .dope-off {
   background:  url('/assets/images/record-off.png');
+}
+
+.dope-on {
+  background:  url('/assets/images/record-on.png');
+}
+
+.dope-on::after {
+  content: 'dope';
+  font-family: 'Yesteryear', cursive;
+  font-size: 26px;
+  padding-left: 5px;
+  line-height: 46px;
 }
