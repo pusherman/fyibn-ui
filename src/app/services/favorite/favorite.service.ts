@@ -10,8 +10,8 @@ export class FavoriteService {
 
   constructor(private api: ApiService) { }
 
-  create(favorite: Favorite) {
-    return this.api.post(this.endpoint, favorite)
+  create(post_id: number) {
+    return this.api.post(this.endpoint, { post_id })
       .map(res => res);
   }
 }
