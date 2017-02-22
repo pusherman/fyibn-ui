@@ -1,2 +1,5 @@
-<div class="dope dope-off clickable">
+<div
+  class="dope clickable"
+  [ngClass]="{'dope-on': favorited, 'dope-off': !favorited}"
+  (click)="toggleFavorite()">
 </div>

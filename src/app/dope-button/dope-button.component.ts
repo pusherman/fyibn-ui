@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
+import { FavoriteActions } from '../services/favorite/favorite.actions';
+
 
 @Component({
   selector: 'dope-button',
@@ -6,10 +9,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dope-button.component.css']
 })
 export class DopeButtonComponent implements OnInit {
+  @Input() postId: number;
 
-  constructor() { }
+  private favorited = false;
+
+  constructor(private actions: FavoriteActions) { }
 
   ngOnInit() {
   }
 
+  toggleFavorite() {
+    const payload = { post_id: this.postId };
+
+    if (this.favorited) {
+      this.actions.remove(payload);
+    } else {
+      this.actions.create(payload);
+    }
+  }
 }
