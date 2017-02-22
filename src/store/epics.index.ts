@@ -5,6 +5,7 @@ import { AuthEpics } from '../app/services/auth/auth.epics';
 import { PostEpics } from '../app/services/post/post.epics';
 import { UserEpics } from '../app/services/user/user.epics';
 import { CommentEpics } from '../app/services/comment/comment.epics';
+import { FavoriteEpics } from '../app/services/favorite/favorite.epics';
 
 @Injectable()
 export class RootEpic {
@@ -15,6 +16,7 @@ export class RootEpic {
     private postEpics: PostEpics,
     private userEpics: UserEpics,
     private commentEpics: CommentEpics,
+    private favoriteEpics: FavoriteEpics,
   ) {
 
     Array.from(arguments)
