@@ -10,9 +10,12 @@ export class FavoriteActions {
 
   constructor(private ngRedux: NgRedux<IAppState>) {}
 
-  create(): void {
+  create({ post_id }): void {
     this.ngRedux.dispatch({
       type: FavoriteActions.CREATE_FAVORITE_REQUESTED,
+      payload: post_id,
+    });
+  }
     });
   }
 }
