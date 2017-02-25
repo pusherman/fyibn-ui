@@ -25,7 +25,7 @@ export class PaginationLinksComponent implements OnInit, OnDestroy {
     private router: Router,
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.subscription = this.pagination$
       .subscribe(pagination => {
         const totalPages = Math.ceil(pagination.totalItems / pagination.perPage);
@@ -37,26 +37,26 @@ export class PaginationLinksComponent implements OnInit, OnDestroy {
       });
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 
-  changePage(page) {
+  changePage(page): void {
     this.actions.changePage(page);
     this.router.navigate(['/'], {
       queryParams: { page }
     });
   }
 
-  nextPage() {
+  nextPage(): void {
     this.changePage(this.currentPage + 1);
   }
 
-  previousPage() {
+  previousPage(): void {
     this.changePage(this.currentPage - 1);
   }
 
-  isCurrentPage(page) {
+  isCurrentPage(page): boolean {
     return page === this.currentPage;
   }
 }
