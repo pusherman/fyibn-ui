@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/map';
 
 import { PostActions } from '../services/post/post.actions';
+import { Pagination } from '../services/post/post.reducers';
 
 @Component({
   selector: 'pagination-links',
@@ -12,18 +13,18 @@ import { PostActions } from '../services/post/post.actions';
   styleUrls: ['./pagination-links.component.css']
 })
 export class PaginationLinksComponent implements OnInit, OnDestroy {
-  @select(['posts', 'pagination', 'currentPage']) currentPage$: Observable<number>;
-  @select(state =>
-    state.posts.pagination.totalItems / state.posts.pagination.perPage
-   ) totalPages$: Observable<number>;
+  @select(['posts', 'pagination']) pagination$: Observable<Pagination>;
 
   private subscription: Subscription;
   public pages: number[];
+
   constructor() { }
 
   ngOnInit() {
-    this.subscription = this.totalPages$
-      .subscribe(totalPages => {
+    this.subscription = this.pagination$
+      .subscribe(pagination => {
+        const totalPages = Math.ceil(pagination.totalItems / pagination.perPage);
+
         this.pages = Array(totalPages)
           .fill(1)
           .map((value, index) => value + index);
