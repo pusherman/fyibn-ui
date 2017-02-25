@@ -12,7 +12,7 @@ import { Comments, Comment } from '../services/comment/comment.reducers';
 })
 export class CommentListItemComponent implements OnInit, OnDestroy {
   @Input() commentId: number;
-  @select() comments$: Observable<Comments>
+  @select() comments$: Observable<Comments>;
 
   private subscription: Subscription;
   public comment: Comment;
