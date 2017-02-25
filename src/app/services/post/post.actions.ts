@@ -13,6 +13,8 @@ export class PostActions {
   static FETCH_POST_SUCCESSFUL = 'FETCH_POST_SUCCESSFUL';
   static FETCH_POST_FAILED = 'FETCH_POST_FAILED';
 
+  static CHANGE_PAGE_COMPLETE = 'CHANGE_PAGE_COMPLETE';
+
   constructor(private ngRedux: NgRedux<IAppState>) {}
 
   getPosts(page): void {
@@ -27,5 +29,12 @@ export class PostActions {
       type: PostActions.FETCH_POST_REQUESTED,
       payload: { id },
     });
+  }
+
+  changePage(page): void {
+    this.ngRedux.dispatch({
+      type: PostActions.CHANGE_PAGE_COMPLETE,
+      payload: { page },
+    })
   }
 }

@@ -77,6 +77,14 @@ export function postReducer(
         byId: Object.assign({}, state.byId, action.payload.entities.posts),
       });
 
+    case PostActions.CHANGE_PAGE_COMPLETE:
+      console.log(action.payload);
+      return Object.assign({}, state, {
+        pagination: Object.assign({}, state.pagination, {
+          currentPage: action.payload.page
+        }),
+      });
+
     case CommentActions.CREATE_COMMENT_SUCCESSFUL:
       return Object.assign({}, state, {
         byId: Object.assign({}, state.byId, {
