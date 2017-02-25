@@ -24,6 +24,7 @@
     "angular2-moment": "^1.1.0",
     "bootstrap": "next",
     "core-js": "^2.4.1",
+    "global": "^4.3.1",
     "ng2-redux": "^5.1.2",
     "normalizr": "^3.1.0",
     "redux": "^3.6.0",
@@ -35,7 +36,7 @@
     "zone.js": "^0.7.2"
   },
   "devDependencies": {
-    "@angular/cli": "1.0.0-beta.32.3",
+    "@angular/cli": "latest",
     "@angular/compiler-cli": "^2.3.1",
     "@angularclass/hmr": "^1.2.2",
     "@types/jasmine": "2.5.38",
