@@ -36,7 +36,7 @@ export class PostEpics {
   getPost = (action$: ActionsObservable<any>) => {
     return action$.ofType(PostActions.FETCH_POST_REQUESTED)
       .switchMap(action => {
-        return this.posts.getPost(action.payload)
+        return this.posts.getPost(action.payload.id)
           .map(results => {
             return {
               type: PostActions.FETCH_POST_SUCCESSFUL,

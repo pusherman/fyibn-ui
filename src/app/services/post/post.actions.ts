@@ -25,7 +25,7 @@ export class PostActions {
   getPost(id): void {
     this.ngRedux.dispatch({
       type: PostActions.FETCH_POST_REQUESTED,
-      payload: id,
+      payload: { id },
     });
   }
 }
