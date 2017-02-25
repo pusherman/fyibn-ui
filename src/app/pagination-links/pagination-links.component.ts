@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
 import { select } from 'ng2-redux';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
@@ -17,14 +18,19 @@ export class PaginationLinksComponent implements OnInit, OnDestroy {
 
   private subscription: Subscription;
   public pages: number[];
+  public currentPage: number;
 
-  constructor() { }
+  constructor(
+    private actions: PostActions,
+    private router: Router,
+  ) { }
 
   ngOnInit() {
     this.subscription = this.pagination$
       .subscribe(pagination => {
         const totalPages = Math.ceil(pagination.totalItems / pagination.perPage);
 
+        this.currentPage = pagination.currentPage;
         this.pages = Array(totalPages)
           .fill(1)
           .map((value, index) => value + index);

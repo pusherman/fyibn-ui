@@ -1,9 +1,9 @@
-<nav aria-label="Page navigation example">
+<nav>
   <ul class="pagination">
     <li class="page-item">
       <a
         class="page-link"
-        href="#"
+        (click)="previousPage()"
         aria-label="Previous">
         <span aria-hidden="true">
           &laquo;
@@ -28,7 +28,7 @@
     <li class="page-item">
       <a
         class="page-link"
-        href="#"
+        (click)="nextPage()"
         aria-label="Next">
         <span aria-hidden="true">
           &raquo;
