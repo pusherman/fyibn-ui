@@ -40,4 +40,23 @@ export class PaginationLinksComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
+
+  changePage(page) {
+    this.actions.changePage(page);
+    this.router.navigate(['/'], {
+      queryParams: { page }
+    });
+  }
+
+  nextPage() {
+    this.changePage(this.currentPage + 1);
+  }
+
+  previousPage() {
+    this.changePage(this.currentPage - 1);
+  }
+
+  isCurrentPage(page) {
+    return page === this.currentPage;
+  }
 }

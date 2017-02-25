@@ -19,8 +19,8 @@
       class="page-item">
       <a
         class="page-link"
-        [routerLink]="['/']"
-        [queryParams]="{ page: page }">
+        (click)="changePage(page)"
+        [ngClass]="{'active-page': isCurrentPage(page)}">
         {{page}}
       </a>
     </li>
