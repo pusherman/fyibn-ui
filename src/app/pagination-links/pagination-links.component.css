@@ -12,3 +12,11 @@
   justify-content: center;
   margin-top: 40px;
 }
+
+.active-page {
+  background: #666;
+}
+
+a {
+  cursor: pointer;
+}
