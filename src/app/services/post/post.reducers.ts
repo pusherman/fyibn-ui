@@ -2,16 +2,15 @@ import { IAction } from '../../../store';
 import { PostActions } from './post.actions';
 import { AuthActions } from '../auth/auth.actions';
 import { CommentActions } from '../comment/comment.actions';
+import { FavoriteActions } from '../favorite/favorite.actions';
 
 export interface Post {
   id: number;
   title: string;
   url: string;
-  commentCount: number;
-  favoriteCount: number;
-  lastCommentBy: string;
+  favorites: number[];
   created_at: Date;
-  comments: number[],
+  comments: number[];
 }
 
 export interface Pagination {
