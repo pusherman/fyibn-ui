@@ -6,9 +6,12 @@ const comment = new schema.Entity('comments', {
   commenter: user
 });
 
+const favorite = new schema.Entity('favorites');
+
 const post = new schema.Entity('posts', {
   user: new schema.Entity('users'),
-  comments: [ comment ]
+  comments: [ comment ],
+  favorites: [ favorite ],
 });
 
 const postsSchema = [ post ];
