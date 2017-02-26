@@ -39,6 +39,7 @@ export function userReducer(
       });
 
     case UserActions.FETCH_ME_SUCCESSFUL:
+      localStorage.setItem('me', action.payload.id);
       return Object.assign({}, state, {
         byId: Object.assign({}, state.byId, {[action.payload.id]: action.payload}),
         authId: action.payload.id,
