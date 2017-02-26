@@ -32,12 +32,12 @@ export class ApiService {
     return this.request(RequestMethod.Post, url, search, body);
   }
 
+  delete(url: string, body: any, search?: URLSearchParams) {
+    return this.request(RequestMethod.Delete, url, search, body);
+  }
+
   // put(url: string, options?: RequestOptionsArgs) {
   //   return this.request(RequestMethod.Put, url, options);
-  // }
-
-  // delete(url: string, options?: RequestOptionsArgs) {
-  //   return this.request(RequestMethod.Delete, url, options);
   // }
 
   // patch(url: string, options?: RequestOptionsArgs) {
