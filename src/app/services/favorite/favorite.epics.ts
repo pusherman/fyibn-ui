@@ -32,4 +32,21 @@ export class FavoriteEpics {
           }));
         });
   }
+
+  remove = (action$: ActionsObservable<any>) => {
+    return action$.ofType(FavoriteActions.REMOVE_FAVORITE_REQUESTED)
+      .switchMap(action => {
+        return this.favorites.remove(action.payload)
+          .map(results => {
+            return {
+              type: FavoriteActions.REMOVE_FAVORITE_SUCCESSFUL,
+              payload: results,
+            };
+          })
+          .catch(error => Observable.of({
+            type: FavoriteActions.REMOVE_FAVORITE_FAILED,
+            payload: error,
+          }));
+        });
+  }
 }
