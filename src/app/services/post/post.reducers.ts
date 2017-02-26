@@ -91,11 +91,23 @@ export function postReducer(
           [action.payload.post_id]: Object.assign({}, state.byId[action.payload.post_id], {
             comments: [
               ...state.byId[action.payload.post_id].comments,
-              action.payload.id
+              action.payload.id,
             ],
           })
         })
       });
+
+    case FavoriteActions.CREATE_FAVORITE_SUCCESSFUL:
+      return Object.assign({}, state, {
+        byId: Object.assign({}, state.byId, {
+          [action.payload.post_id]: Object.assign({}, state.byId[action.payload.post_id], {
+            favorites: [
+              ...state.byId[action.payload.post_id].favorites,
+              action.payload.id,
+            ],
+          })
+        })
+      })
 
     case AuthActions.AUTH_ENDED:
       return Object.assign({}, state, INITIAL_STATE);
