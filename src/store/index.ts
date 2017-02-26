@@ -10,12 +10,14 @@ import { authReducer, IAuth } from '../app/services/auth/auth.reducers';
 import { postReducer, Posts } from '../app/services/post/post.reducers';
 import { userReducer, Users } from '../app/services/user/user.reducers';
 import { commentReducer, Comments } from '../app/services/comment/comment.reducers';
+import { favoriteReducer, Favorites } from '../app/services/favorite/favorite.reducers';
 
 export interface IAppState {
   auth: IAuth;
   posts: Posts;
   users: Users;
   comments: Comments;
+  favorites: Favorites;
 };
 
 const appReducer = combineReducers<IAppState>({
@@ -23,6 +25,7 @@ const appReducer = combineReducers<IAppState>({
   posts: postReducer,
   users: userReducer,
   comments: commentReducer,
+  favorites: favoriteReducer,
 });
 
 export const rootReducer = (state, action) => {
