@@ -15,7 +15,7 @@ import { Comments } from '../services/comment/comment.reducers';
 })
 export class AddCommentComponent implements OnInit, OnDestroy {
   @Input() postId: number;
-  @select(['comments', 'isFetching']) isSubmitting$: Observable<boolean>
+  @select(['comments', 'isFetching']) isSubmitting$: Observable<boolean>;
 
   public comment: FormGroup;
   public isSubmitting = false;
