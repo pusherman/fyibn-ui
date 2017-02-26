@@ -14,4 +14,9 @@ export class FavoriteService {
     return this.api.post(this.endpoint, { post_id })
       .map(res => res);
   }
+
+  remove(post_id: number) {
+    return this.api.delete(this.endpoint, { post_id })
+      .map(res => res);
+  }
 }
