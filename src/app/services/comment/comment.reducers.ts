@@ -1,6 +1,7 @@
 import { IAction } from '../../../store';
 import { PostActions } from '../post/post.actions';
 import { CommentActions } from './comment.actions';
+import { AuthActions } from '../auth/auth.actions';
 
 export interface Comment {
   id?: number;
@@ -44,7 +45,7 @@ export function commentReducer(
 
     case CommentActions.CREATE_COMMENT_FAILED:
       return Object.assign({}, state, {
-        isFetching: true,
+        isFetching: false,
         error: action.payload,
       });
 
