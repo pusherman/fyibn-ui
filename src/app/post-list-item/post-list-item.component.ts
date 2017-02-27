@@ -53,7 +53,9 @@ export class PostListItemComponent implements OnInit, OnDestroy {
     this.commentSubscription = this.commentsById$
       .subscribe(comments => {
         this.lastComment = comments[lastCommentId];
-        this.loadLastCommenter(this.lastComment.user_id);
+        if (this.lastComment) {
+          this.loadLastCommenter(this.lastComment.user_id);
+        }
       });
   }
 

@@ -5,6 +5,7 @@ import { MomentModule } from 'angular2-moment';
 import { PageHeaderComponent } from '../page-header/page-header.component';
 import { DopeButtonComponent } from '../dope-button/dope-button.component';
 import { ByLineComponent } from '../by-line/by-line.component';
+import { PostPointsComponent } from '../post-points/post-points.component';
 
 @NgModule({
   imports: [
@@ -15,11 +16,13 @@ import { ByLineComponent } from '../by-line/by-line.component';
     PageHeaderComponent,
     DopeButtonComponent,
     ByLineComponent,
+    PostPointsComponent,
   ],
   exports: [
     PageHeaderComponent,
     DopeButtonComponent,
     ByLineComponent,
+    PostPointsComponent,
   ]
 })
 export class SharedModule { }
