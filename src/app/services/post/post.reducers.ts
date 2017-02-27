@@ -106,7 +106,7 @@ export function postReducer(
             ],
           })
         })
-      })
+      });
 
     case AuthActions.AUTH_ENDED:
       return Object.assign({}, state, INITIAL_STATE);
