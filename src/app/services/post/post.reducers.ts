@@ -96,6 +96,18 @@ export function postReducer(
         })
       });
 
+    case FavoriteActions.REMOVE_FAVORITE_SUCCESSFUL:
+      const postId = action.payload.post_id;
+      const post = state.byId[postId];
+
+      return Object.assign({}, state, {
+        byId: Object.assign({}, state.byId, {
+          [postId]: Object.assign({}, post, {
+            favorites: post.favorites.filter(favorite => favorite.id !== action.payload.id)
+          })
+        })
+      });
+
     case FavoriteActions.CREATE_FAVORITE_SUCCESSFUL:
       return Object.assign({}, state, {
         byId: Object.assign({}, state.byId, {
