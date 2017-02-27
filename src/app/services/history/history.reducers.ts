@@ -43,7 +43,7 @@ export function historyReducer(
       });
 
     case HistoryActions.REMOVE_HISTORY_SUCCESSFUL:
-      const deletedId = action.payload.favorite_id;
+      const deletedId = action.payload.post_id;
       const byPostId = Object.assign({}, state.byPostId);
 
       delete byPostId[deletedId];
