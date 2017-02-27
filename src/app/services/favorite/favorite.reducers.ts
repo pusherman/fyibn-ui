@@ -43,6 +43,18 @@ export function favoriteReducer(
         error: false,
       });
 
+    case FavoriteActions.REMOVE_FAVORITE_SUCCESSFUL:
+      const deletedId = action.payload.favorite_id;
+      const byId = Object.assign({}, state.byId);
+
+      delete byId[deletedId];
+
+      return Object.assign({}, state, {
+        isFetching: false,
+        error: false,
+        byId,
+      });
+
     case PostActions.FETCH_POSTS_SUCCESSFUL:
       return Object.assign({}, state, {
         byId: Object.assign({}, state.byId, action.payload.entities.favorites),
