@@ -12,7 +12,12 @@
       </div>
 
       <div class="meta">
-        {{ post.favorites.length }} points &middot;
+        <post-points
+          [points]="post.favorites.length">
+        </post-points>
+
+        &middot;
+
         <by-line
           [userId]="post.user_id"
           [byDate]="post.created_at">

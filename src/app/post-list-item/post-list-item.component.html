@@ -14,8 +14,13 @@
     </div>
 
     <div class="meta">
-      0 points added {{ post.created_at | amTimeAgo }}
-       <by-line
+      <post-points
+        [points]="post.favorites.length">
+      </post-points>
+
+      added {{ post.created_at | amTimeAgo }}
+
+      <by-line
         [userId]="post.user">
       </by-line>
     </div>
