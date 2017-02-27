@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-import { normalize, schema } from 'normalizr';
 
 import { ApiService } from '../api/api.service';
-import { Comment } from './comment.reducers';
 
 @Injectable()
 export class CommentService {

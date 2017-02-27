@@ -19,6 +19,7 @@ import { PostModule } from './services/post/post.module';
 import { UserModule } from './services/user/user.module';
 import { CommentModule } from './services/comment/comment.module';
 import { FavoriteModule } from './services/favorite/favorite.module';
+import { HistoryModule } from './services/history/history.module';
 
 import { ApiService } from './services/api/api.service';
 
@@ -43,6 +44,7 @@ import { ApiService } from './services/api/api.service';
     UserModule,
     CommentModule,
     FavoriteModule,
+    HistoryModule,
   ],
   providers: [
     RootEpic,
