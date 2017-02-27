@@ -30,6 +30,7 @@ export function favoriteReducer(
 
   switch (action.type) {
     case FavoriteActions.CREATE_FAVORITE_REQUESTED:
+    case FavoriteActions.REMOVE_FAVORITE_REQUESTED:
       return Object.assign({}, state, {
         isFetching: true,
         error: false,
