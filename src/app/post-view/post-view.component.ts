@@ -6,6 +6,7 @@ import { select } from 'ng2-redux';
 
 import { PostActions } from '../services/post/post.actions';
 import { Posts, Post } from '../services/post/post.reducers';
+import { HistoryActions } from '../services/history/history.actions';
 
 @Component({
   selector: 'post-view',
@@ -20,7 +21,8 @@ export class PostViewComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private actions: PostActions,
+    private postActions: PostActions,
+    private historyActions: HistoryActions,
   ) { }
 
   ngOnInit() {
@@ -39,9 +41,10 @@ export class PostViewComponent implements OnInit, OnDestroy {
       .subscribe(posts => {
         if (posts.byId[id] !== undefined) {
           this.post = posts.byId[id];
+          this.historyActions.create({ post_id: id });
 
         } else {
-          this.actions.getPost(id);
+          this.postActions.getPost(id);
         }
       });
   }
