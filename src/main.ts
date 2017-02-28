@@ -11,6 +11,8 @@ if (environment.production) {
   enableProdMode();
 }
 
+declare var module;
+
 const bootstrap = () => {
   return platformBrowserDynamic().bootstrapModule(AppModule);
 };

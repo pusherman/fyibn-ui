@@ -7,8 +7,8 @@ import { Router, NavigationEnd } from '@angular/router';
 import { RootEpic } from '../store/epics.index';
 import { IAppState, rootReducer } from '../store/index';
 
-const createLogger = require('redux-logger');
-const persistState = require('redux-localstorage');
+import * as createLogger from 'redux-logger';
+import persistState from 'redux-localstorage';
 
 @Component({
   selector: 'app-root',
@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
     ];
 
     const enhancers = [
-      persistState(undefined, { key: 'fyibn/store' }),
+      persistState(undefined, 'fyibn/store'),
     ];
 
     if (devTool.isEnabled()) {
