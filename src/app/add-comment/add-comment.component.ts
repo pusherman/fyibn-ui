@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
-import { select } from 'ng2-redux';
+import { select } from '@angular-redux/store';
 
 import { CommentForm } from './add-comment.interface';
 import { CommentActions } from '../services/comment/comment.actions';

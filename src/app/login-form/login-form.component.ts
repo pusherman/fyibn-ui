@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
-import { select } from 'ng2-redux';
+import { select } from '@angular-redux/store';
 
 import { AuthActions } from '../services/auth/auth.actions';
 import { Login } from './login-form.interface';

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DevToolsExtension, NgRedux, select } from 'ng2-redux';
+import { DevToolsExtension, NgRedux, select } from '@angular-redux/store';
 import { createEpicMiddleware } from 'redux-observable';
 import { Observable } from 'rxjs/Observable';
 import { Router, NavigationEnd } from '@angular/router';

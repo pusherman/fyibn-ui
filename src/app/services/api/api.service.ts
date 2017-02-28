@@ -9,7 +9,7 @@ import {
   URLSearchParams,
 } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { NgRedux } from 'ng2-redux';
+import { NgRedux } from '@angular-redux/store';
 
 import { IAppState } from '../../../store';
 import { environment } from '../../../environments/environment';

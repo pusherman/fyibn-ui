@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
-import { select } from 'ng2-redux';
+import { select } from '@angular-redux/store';
 
 import { PostActions } from '../services/post/post.actions';
 import { Posts, Post } from '../services/post/post.reducers';

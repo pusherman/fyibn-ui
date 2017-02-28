@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
-import { select } from 'ng2-redux';
+import { select } from '@angular-redux/store';
 
 import { User } from '../services/user/user.reducers';
 
