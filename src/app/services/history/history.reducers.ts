@@ -37,7 +37,9 @@ export function historyReducer(
 
     case HistoryActions.CREATE_HISTORY_SUCCESSFUL:
       return Object.assign({}, state, {
-        byPostId: Object.assign({}, state.byPostId, {[action.payload.id]: action.payload}),
+        byPostId: Object.assign({}, state.byPostId, {
+          [action.payload.post_id]: action.payload
+        }),
         isFetching: false,
         error: false,
       });
