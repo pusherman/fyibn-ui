@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { Post } from '../services/post/post.reducers';
 import { Comment } from '../services/comment/comment.reducers';
 import { User } from '../services/user/user.reducers';
+import { History } from '../services/history/history.reducers';
 
 @Component({
   selector: 'post-list-item',
@@ -17,13 +18,16 @@ export class PostListItemComponent implements OnInit, OnDestroy {
   @select(['posts', 'byId']) postsById$: Observable<Post[]>;
   @select(['comments', 'byId']) commentsById$: Observable<Comment[]>;
   @select(['users', 'byId']) usersById$: Observable<User[]>;
+  @select() history$: Observable<History>;
 
   public post: Post;
   public lastComment: Comment;
   public lastCommenter: User;
+  public isNewPost = true;
   private postSubscription: Subscription;
   private commentSubscription: Subscription;
   private userSubscription: Subscription;
+  private historySubscription: Subscription;
 
   constructor() { }
 
@@ -31,6 +35,7 @@ export class PostListItemComponent implements OnInit, OnDestroy {
     this.postSubscription = this.postsById$
       .subscribe(posts => {
         this.post = posts[this.postId];
+        this.setNewPostFlag(this.post);
 
         if (this.post.comments.length > 0) {
           const lastCommentId = this.post.comments[this.post.comments.length - 1];
@@ -47,6 +52,17 @@ export class PostListItemComponent implements OnInit, OnDestroy {
       this.commentSubscription.unsubscribe();
       this.userSubscription.unsubscribe();
     }
+  }
+
+  setNewPostFlag(post: Post): void {
+    this.historySubscription = this.history$
+      .subscribe(history => {
+        const postHistory = history.byPostId[post.id];
+
+        if (postHistory) {
+          this.isNewPost = post.created_at > postHistory.updated_at;
+        }
+      });
   }
 
   loadLastComment(lastCommentId?: number): void {
