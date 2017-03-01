@@ -10,6 +10,11 @@
     [routerLink]="['post', post.id]">
 
     <div class="title">
+      <span
+        *ngIf="isNewPost"
+        class="badge badge-default">
+        New
+      </span>
       {{ post.title }}
     </div>
 
