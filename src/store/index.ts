@@ -11,6 +11,7 @@ import { postReducer, Posts } from '../app/services/post/post.reducers';
 import { userReducer, Users } from '../app/services/user/user.reducers';
 import { commentReducer, Comments } from '../app/services/comment/comment.reducers';
 import { favoriteReducer, Favorites } from '../app/services/favorite/favorite.reducers';
+import { historyReducer, History } from '../app/services/history/history.reducers';
 
 export interface IAppState {
   auth: IAuth;
@@ -18,6 +19,7 @@ export interface IAppState {
   users: Users;
   comments: Comments;
   favorites: Favorites;
+  history: History;
 };
 
 const appReducer = combineReducers<IAppState>({
@@ -26,6 +28,7 @@ const appReducer = combineReducers<IAppState>({
   users: userReducer,
   comments: commentReducer,
   favorites: favoriteReducer,
+  history: historyReducer,
 });
 
 export const rootReducer = (state, action) => {
