@@ -6,6 +6,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "build": "ng build",
     "hmr": "ng serve --hmr -e=hmr",
     "test": "ng test",
     "lint": "ng lint",
