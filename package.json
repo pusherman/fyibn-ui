@@ -14,7 +14,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular-redux/store": "6.0.1",
+    "@angular-redux/store": "^6.2.0",
     "@angular/common": "^4.0.0",
     "@angular/compiler": "^4.0.0",
     "@angular/core": "^4.0.0",
@@ -35,7 +35,7 @@
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
-    "@angular/cli": "^1.0.2",
+    "@angular/cli": "^1.0.3",
     "@angular/compiler-cli": "^4.0.0",
     "@angularclass/hmr": "^1.2.2",
     "@types/jasmine": "2.5.38",
