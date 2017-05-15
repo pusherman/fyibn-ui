@@ -8,7 +8,7 @@ import { compose } from 'redux';
 import { RootEpic } from '../store/epics.index';
 import { IAppState, rootReducer } from '../store/index';
 
-import adapter from 'redux-localstorage/lib/adapters/localStorage';
+import * as adapter from 'redux-localstorage/lib/adapters/localStorage';
 import filter from 'redux-localstorage-filter';
 
 import createLogger from 'redux-logger';
