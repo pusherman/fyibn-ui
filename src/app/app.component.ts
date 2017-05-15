@@ -3,11 +3,15 @@ import { DevToolsExtension, NgRedux, select } from '@angular-redux/store';
 import { createEpicMiddleware } from 'redux-observable';
 import { Observable } from 'rxjs/Observable';
 import { Router, NavigationEnd } from '@angular/router';
+import { compose } from 'redux';
 
 import { RootEpic } from '../store/epics.index';
 import { IAppState, rootReducer } from '../store/index';
 
-import * as createLogger from 'redux-logger';
+import adapter from 'redux-localstorage/lib/adapters/localStorage';
+import filter from 'redux-localstorage-filter';
+
+import createLogger from 'redux-logger';
 import persistState from 'redux-localstorage';
 
 @Component({
@@ -29,8 +33,12 @@ export class AppComponent implements OnInit {
       createLogger(),
     ];
 
+    const storage = compose(
+      filter('auth')
+    )(adapter(window.localStorage));
+
     const enhancers = [
-      persistState('auth', 'fyibn/store'),
+      persistState(storage, 'fyibn/store'),
     ];
 
     if (devTool.isEnabled()) {
