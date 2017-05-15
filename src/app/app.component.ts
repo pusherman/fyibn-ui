@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
     ];
 
     const enhancers = [
-      persistState(undefined, 'fyibn/store'),
+      persistState('auth', 'fyibn/store'),
     ];
 
     if (devTool.isEnabled()) {

@@ -4097,6 +4097,10 @@ reduce-function-call@^1.0.1:
   dependencies:
     balanced-match "^0.4.2"
 
+redux-localstorage-filter@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/redux-localstorage-filter/-/redux-localstorage-filter-0.1.1.tgz#94c5ab68d8cda479bb3cc6cdf03569f8f63a188d"
+
 redux-localstorage@^0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/redux-localstorage/-/redux-localstorage-0.4.1.tgz#faf6d719c581397294d811473ffcedee065c933c"
