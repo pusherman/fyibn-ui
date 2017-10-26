@@ -36,9 +36,9 @@
     [routerLink]="['post', post.id]">
 
     <span [ngPlural]="post.comments.length">
-      <template ngPluralCase="=0">0 Comments</template>
-      <template ngPluralCase="=1">1 Comment</template>
-      <template ngPluralCase="other">{{ post.comments.length }} Comments</template>
+      <ng-template ngPluralCase="=0">0 Comments</ng-template>
+      <ng-template ngPluralCase="=1">1 Comment</ng-template>
+      <ng-template ngPluralCase="other">{{ post.comments.length }} Comments</ng-template>
     </span>
 
     <div

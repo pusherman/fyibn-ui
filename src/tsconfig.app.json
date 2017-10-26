@@ -14,7 +14,6 @@
     "module": "es2015",
     "baseUrl": "",
     "types": [
-      "redux-localstorage",
       "redux-logger"
     ]
   },

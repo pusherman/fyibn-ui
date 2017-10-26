@@ -7,12 +7,8 @@ import { compose } from 'redux';
 
 import { RootEpic } from '../store/epics.index';
 import { IAppState, rootReducer } from '../store/index';
+import { createLogger } from 'redux-logger';
 
-import * as adapter from 'redux-localstorage/lib/adapters/localStorage';
-import filter from 'redux-localstorage-filter';
-
-import createLogger from 'redux-logger';
-import persistState from 'redux-localstorage';
 
 @Component({
   selector: 'app-root',
@@ -33,13 +29,7 @@ export class AppComponent implements OnInit {
       createLogger(),
     ];
 
-    const storage = compose(
-      filter('auth')
-    )(adapter(window.localStorage));
-
-    const enhancers = [
-      persistState(storage, 'fyibn/store'),
-    ];
+    const enhancers = [];
 
     if (devTool.isEnabled()) {
       enhancers.push(devTool.enhancer());

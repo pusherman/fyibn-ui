@@ -14,7 +14,8 @@ if (environment.production) {
 declare var module;
 
 const bootstrap = () => {
-  return platformBrowserDynamic().bootstrapModule(AppModule);
+  return platformBrowserDynamic().bootstrapModule(AppModule)
+    .catch(err => console.log(err));
 };
 
 if (environment.hmr) {

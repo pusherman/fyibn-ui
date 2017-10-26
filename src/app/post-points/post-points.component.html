@@ -1,4 +1,4 @@
 <span [ngPlural]="points">
-  <template ngPluralCase="=1">1 point</template>
-  <template ngPluralCase="other">{{ points }} points</template>
+  <ng-template ngPluralCase="=1">1 point</ng-template>
+  <ng-template ngPluralCase="other">{{ points }} points</ng-template>
 </span>
