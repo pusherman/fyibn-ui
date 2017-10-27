@@ -12,6 +12,10 @@ export class HistoryActions {
   static REMOVE_HISTORY_SUCCESSFUL = 'REMOVE_HISTORY_SUCCESSFUL';
   static REMOVE_HISTORY_FAILED = 'REMOVE_HISTORY_FAILED';
 
+  static FETCH_HISTORY_REQUESTED = 'FETCH_HISTORY_REQUESTED';
+  static FETCH_HISTORY_RECEIVED = 'FETCH_HISTORY_RECEIVED';
+  static FETCH_HISTORY_FAILED = 'FETCH_HISTORY_FAILED';
+
   constructor(private ngRedux: NgRedux<IAppState>) {}
 
   create({ post_id }): void {
@@ -26,5 +30,17 @@ export class HistoryActions {
       type: HistoryActions.REMOVE_HISTORY_REQUESTED,
       payload: post_id,
     });
+  }
+
+  fetchIfNeeded(): void {
+    const postHistory = this.ngRedux.getState().history.byPostId;
+
+    if (Object.keys(postHistory).length > 0) {
+      return;
+    }
+
+    this.ngRedux.dispatch({
+      type: HistoryActions.FETCH_HISTORY_REQUESTED,
+    })
   }
 }

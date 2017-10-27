@@ -49,4 +49,21 @@ export class HistoryEpics {
           }));
         });
   }
+
+  getAll = (action$: ActionsObservable<any>) => {
+    return action$.ofType(HistoryActions.FETCH_HISTORY_REQUESTED)
+      .switchMap(action => {
+        return this.history.getAll()
+          .map(results => {
+            return {
+              type: HistoryActions.FETCH_HISTORY_RECEIVED,
+              payload: results,
+            };
+          })
+          .catch(error => Observable.of({
+            type: HistoryActions.FETCH_HISTORY_FAILED,
+            payload: error,
+          }));
+        });
+  }
 }

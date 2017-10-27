@@ -30,6 +30,7 @@ export function historyReducer(
   switch (action.type) {
     case HistoryActions.CREATE_HISTORY_REQUESTED:
     case HistoryActions.REMOVE_HISTORY_REQUESTED:
+    case HistoryActions.FETCH_HISTORY_REQUESTED:
       return Object.assign({}, state, {
         isFetching: true,
         error: false,
@@ -55,6 +56,17 @@ export function historyReducer(
         error: false,
         byPostId,
       });
+
+    case HistoryActions.FETCH_HISTORY_RECEIVED:
+      return {
+        ...state,
+        isFetching: false,
+        error: false,
+        byPostId: {
+          ...state.byPostId,
+          ...action.payload.entities.history,
+        },
+      }
 
     case AuthActions.AUTH_ENDED:
       return Object.assign({}, state, INITIAL_STATE);
