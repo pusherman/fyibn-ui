@@ -27,7 +27,7 @@ export class PostViewComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.loadPost(+params['id']);
+      this.loadPost(Number(params['id']));
     });
   }
 
