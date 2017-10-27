@@ -25,6 +25,9 @@ export class ByLineComponent implements OnInit, OnDestroy {
     this.subscription = this.users$
       .subscribe((users) => {
         this.user = users[this.userId];
+        // @todo
+        // if the user does not exist then
+        // get call userAction.FetchUser
       });
   }
 
