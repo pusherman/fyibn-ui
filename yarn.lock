@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@angular-devkit/build-optimizer@~0.0.28":
+"@angular-devkit/build-optimizer@~0.0.31":
   version "0.0.31"
   resolved "https://registry.yarnpkg.com/@angular-devkit/build-optimizer/-/build-optimizer-0.0.31.tgz#511bc00e18c787a6cd4efe37b8cdb9f1bc6d4472"
   dependencies:
@@ -36,17 +36,17 @@
   dependencies:
     tslib "^1.7.1"
 
-"@angular/cli@1.5.0-rc.3":
-  version "1.5.0-rc.3"
-  resolved "https://registry.yarnpkg.com/@angular/cli/-/cli-1.5.0-rc.3.tgz#26666c849332c23834c39611220753f36b3787ed"
+"@angular/cli@1.5.0-rc.5":
+  version "1.5.0-rc.5"
+  resolved "https://registry.yarnpkg.com/@angular/cli/-/cli-1.5.0-rc.5.tgz#f11c72b8796a197c6de14aa43ed05c9295621480"
   dependencies:
-    "@angular-devkit/build-optimizer" "~0.0.28"
+    "@angular-devkit/build-optimizer" "~0.0.31"
     "@angular-devkit/schematics" "~0.0.34"
     "@ngtools/json-schema" "1.1.0"
-    "@ngtools/webpack" "1.8.0-rc.3"
+    "@ngtools/webpack" "1.8.0-rc.5"
     "@schematics/angular" "~0.0.48"
     autoprefixer "^6.5.3"
-    chalk "^2.0.1"
+    chalk "~2.2.0"
     circular-dependency-plugin "^3.0.0"
     common-tags "^1.3.1"
     copy-webpack-plugin "^4.1.1"
@@ -86,7 +86,6 @@
     style-loader "^0.13.1"
     stylus "^0.54.5"
     stylus-loader "^3.0.1"
-    typescript ">=2.0.0 <2.6.0"
     uglifyjs-webpack-plugin "1.0.0"
     url-loader "^0.6.2"
     webpack "~3.8.1"
@@ -174,9 +173,9 @@
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@ngtools/json-schema/-/json-schema-1.1.0.tgz#c3a0c544d62392acc2813a42c8a0dc6f58f86922"
 
-"@ngtools/webpack@1.8.0-rc.3":
-  version "1.8.0-rc.3"
-  resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-1.8.0-rc.3.tgz#08d673b5b305a2ca18e71a35b3a8cf009e390a28"
+"@ngtools/webpack@1.8.0-rc.5":
+  version "1.8.0-rc.5"
+  resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-1.8.0-rc.5.tgz#26e7890227683b88876d4fe044ad5951829082b6"
   dependencies:
     chalk "^2.0.1"
     enhanced-resolve "^3.1.0"
@@ -209,6 +208,12 @@
 "@types/q@^0.0.32":
   version "0.0.32"
   resolved "https://registry.yarnpkg.com/@types/q/-/q-0.0.32.tgz#bd284e57c84f1325da702babfc82a5328190c0c5"
+
+"@types/redux-localstorage@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@types/redux-localstorage/-/redux-localstorage-1.0.7.tgz#1dad8cf6c32dd7daced71728cc34dca25167af12"
+  dependencies:
+    redux "^3.6.0"
 
 "@types/redux-logger@^3.0.0":
   version "3.0.5"
@@ -585,10 +590,6 @@ babylon@^6.11.0, babylon@^6.15.0, babylon@^6.18.0:
   version "6.18.0"
   resolved "https://registry.yarnpkg.com/babylon/-/babylon-6.18.0.tgz#af2f3b88fa6f5c1e4c634d1a0f8eac4f55b395e3"
 
-babylon@^6.13.0:
-  version "6.17.2"
-  resolved "https://registry.yarnpkg.com/babylon/-/babylon-6.17.2.tgz#201d25ef5f892c41bae49488b08db0dd476e9f5c"
-
 backo2@1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/backo2/-/backo2-1.0.2.tgz#31ab1ac8b129363463e35b3ebb69f4dfcfba7947"
@@ -909,17 +910,9 @@ chalk@^1.1.0, chalk@^1.1.1, chalk@^1.1.3:
     strip-ansi "^3.0.0"
     supports-color "^2.0.0"
 
-chalk@^2.0.0, chalk@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.0.1.tgz#dbec49436d2ae15f536114e76d14656cdbc0f44d"
-  dependencies:
-    ansi-styles "^3.1.0"
-    escape-string-regexp "^1.0.5"
-    supports-color "^4.0.0"
-
-chalk@^2.1.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.3.0.tgz#b5ea48efc9c1793dccc9b4767c93914d3f2d52ba"
+chalk@^2.0.0, chalk@^2.0.1, chalk@^2.1.0, chalk@~2.2.0:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.2.2.tgz#4403f5cf18f35c05f51fbdf152bf588f956cf7cb"
   dependencies:
     ansi-styles "^3.1.0"
     escape-string-regexp "^1.0.5"
@@ -1438,13 +1431,7 @@ date-now@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/date-now/-/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
 
-debug@*, debug@2.6.7, debug@^2.2.0:
-  version "2.6.7"
-  resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.7.tgz#92bad1f6d05bbb6bba22cca88bcd0ec894c2861e"
-  dependencies:
-    ms "2.0.0"
-
-debug@2, debug@2.6.9, debug@^2.6.6, debug@^2.6.8:
+debug@*, debug@2, debug@2.6.9, debug@^2.2.0, debug@^2.6.6, debug@^2.6.8:
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
   dependencies:
@@ -1461,6 +1448,12 @@ debug@2.3.3:
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.3.3.tgz#40c453e67e6e13c901ddec317af8986cda9eff8c"
   dependencies:
     ms "0.7.2"
+
+debug@2.6.7:
+  version "2.6.7"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.7.tgz#92bad1f6d05bbb6bba22cca88bcd0ec894c2861e"
+  dependencies:
+    ms "2.0.0"
 
 debug@2.6.8:
   version "2.6.8"
@@ -2909,19 +2902,7 @@ istanbul-lib-hook@^1.1.0:
   dependencies:
     append-transform "^0.4.0"
 
-istanbul-lib-instrument@^1.1.3:
-  version "1.7.2"
-  resolved "https://registry.yarnpkg.com/istanbul-lib-instrument/-/istanbul-lib-instrument-1.7.2.tgz#6014b03d3470fb77638d5802508c255c06312e56"
-  dependencies:
-    babel-generator "^6.18.0"
-    babel-template "^6.16.0"
-    babel-traverse "^6.18.0"
-    babel-types "^6.18.0"
-    babylon "^6.13.0"
-    istanbul-lib-coverage "^1.1.1"
-    semver "^5.3.0"
-
-istanbul-lib-instrument@^1.9.1:
+istanbul-lib-instrument@^1.1.3, istanbul-lib-instrument@^1.9.1:
   version "1.9.1"
   resolved "https://registry.yarnpkg.com/istanbul-lib-instrument/-/istanbul-lib-instrument-1.9.1.tgz#250b30b3531e5d3251299fdd64b0b2c9db6b558e"
   dependencies:
@@ -3751,11 +3732,11 @@ oauth-sign@~0.8.1:
   version "0.8.2"
   resolved "https://registry.yarnpkg.com/oauth-sign/-/oauth-sign-0.8.2.tgz#46a6ab7f0aead8deae9ec0565780b7d4efeb9d43"
 
-object-assign@4.1.0:
+object-assign@4.1.0, object-assign@^4.0.1, object-assign@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.0.tgz#7a3b3d0e98063d43f4c03f2e8ae6cd51a86883a0"
 
-object-assign@^4.0.1, object-assign@^4.1.0, object-assign@^4.1.1:
+object-assign@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
 
@@ -4593,6 +4574,14 @@ reduce-function-call@^1.0.1:
   resolved "https://registry.yarnpkg.com/reduce-function-call/-/reduce-function-call-1.0.2.tgz#5a200bf92e0e37751752fe45b0ab330fd4b6be99"
   dependencies:
     balanced-match "^0.4.2"
+
+redux-localstorage-filter@0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/redux-localstorage-filter/-/redux-localstorage-filter-0.1.1.tgz#94c5ab68d8cda479bb3cc6cdf03569f8f63a188d"
+
+redux-localstorage@rc:
+  version "1.0.0-rc5"
+  resolved "https://registry.yarnpkg.com/redux-localstorage/-/redux-localstorage-1.0.0-rc5.tgz#7067bc4cb0b03b5c791025ac33dde6175d50d5d1"
 
 redux-logger@^3.0.1:
   version "3.0.6"
@@ -5502,7 +5491,7 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
 
-"typescript@>=2.0.0 <2.6.0", typescript@^2.3.3, typescript@~2.3.3:
+typescript@^2.3.3, typescript@~2.3.3:
   version "2.3.4"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.3.4.tgz#3d38321828231e434f287514959c37a82b629f42"
 
