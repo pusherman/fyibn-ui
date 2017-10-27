@@ -54,6 +54,11 @@ export function commentReducer(
         byId: Object.assign({}, state.byId, action.payload.entities.comments),
       });
 
+    case PostActions.FETCH_POST_SUCCESSFUL:
+      return Object.assign({}, state, {
+        byId: Object.assign({}, state.byId, action.payload.entities.comments),
+      });
+
     case AuthActions.AUTH_ENDED:
       return Object.assign({}, state, INITIAL_STATE);
 
