@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { select } from '@angular-redux/store';
 
 import { User } from '../services/user/user.reducers';
+import { UserActions } from '../services/user/user.actions';
 
 
 @Component({
@@ -19,15 +20,18 @@ export class ByLineComponent implements OnInit, OnDestroy {
   public user: User;
   private subscription: Subscription;
 
-  constructor() { }
+  constructor(
+    private actions: UserActions,
+  ) { }
 
   ngOnInit() {
     this.subscription = this.users$
       .subscribe((users) => {
-        this.user = users[this.userId];
-        // @todo
-        // if the user does not exist then
-        // get call userAction.FetchUser
+        if (users[this.userId] !== undefined) {
+          this.user = users[this.userId];
+        } else {
+          this.actions.getUser(this.userId);
+        }
       });
   }
 

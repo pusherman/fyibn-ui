@@ -33,4 +33,22 @@ export class UserEpics {
           }));
         });
   }
+
+  getUser = (action$: ActionsObservable<any>) => {
+    return action$.ofType(UserActions.FETCH_USER_REQUESTED)
+      .mergeMap(action => {
+        console.log(action);
+        return this.users.getUser(action.payload.userId)
+          .map(user => {
+            return {
+              type: UserActions.FETCH_USER_SUCCESSFUL,
+              payload: user,
+            };
+          })
+          .catch(error => Observable.of({
+            type: UserActions.FETCH_USER_FAILED,
+            payload: error,
+          }));
+        });
+  }
 }

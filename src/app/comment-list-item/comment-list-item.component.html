@@ -3,7 +3,9 @@
     {{ comment.body }}
   </p>
   <span class="meta">
-    by corey on
-    {{ comment.created_at | amDateFormat: 'MMM MM h:mm a' }}
+    <by-line
+      [userId]="comment.user_id"
+      [byDate]="comment.created_at">
+    </by-line>
   </span>
 </div>
