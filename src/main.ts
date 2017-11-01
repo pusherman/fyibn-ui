@@ -15,7 +15,7 @@ declare var module;
 
 const bootstrap = () => {
   return platformBrowserDynamic().bootstrapModule(AppModule)
-    .catch(err => console.log(err));
+    .catch(err => { console.log(err); return err; });
 };
 
 if (environment.hmr) {
